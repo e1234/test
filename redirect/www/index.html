@@ -11,7 +11,12 @@
     </head>
     <body>
         <div class="app">
-            <iframe src="http://www.w3schools.com"></iframe>            
+            <iframe id="iframeApp" src="http://www.w3schools.com"></iframe>            
         </div>
     </body>
 </html>
+<script type="text/javascript">
+    //document.getElementById("iframeApp").style.height = window.screen.availHeight;
+    document.getElementById("iframeApp").setAttribute("style","height:"+window.screen.availHeight+"px"); 
+    console.log("!!!!")
+</script>
