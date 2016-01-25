@@ -1,1 +1,0 @@
-http://aws2.smartadtags.com:4000
