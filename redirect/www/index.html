@@ -20,4 +20,10 @@
     var heightMaster = window.screen.availHeight * 0.85;
     var widthMaster = window.screen.availWidth;
     document.getElementById("iframeApp").setAttribute("style","width:"+widthMaster+"px;height:"+heightMaster+"px"); 
+    window.addEventListener("orientationchange", function() {
+        var heightMaster = window.screen.availHeight * 0.85;
+        var widthMaster = window.screen.availWidth;
+        document.getElementById("iframeApp").setAttribute("style","width:"+widthMaster+"px;height:"+heightMaster+"px"); 
+        alert("!!!")
+    }, false);
 </script>
