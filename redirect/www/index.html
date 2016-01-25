@@ -16,14 +16,14 @@
     </body>
 </html>
 <script type="text/javascript">
-    //document.getElementById("iframeApp").style.height = window.screen.availHeight;
-    var heightMaster = window.screen.availHeight * 0.85;
-    var widthMaster = window.screen.availWidth;
-    document.getElementById("iframeApp").setAttribute("style","width:"+widthMaster+"px;height:"+heightMaster+"px"); 
-    window.addEventListener("orientationchange", function() {
-        var heightMaster = window.screen.availHeight * 0.85;
+    function setScreen(){
+        var heightMaster = window.screen.availHeight * 0.80;
         var widthMaster = window.screen.availWidth;
         document.getElementById("iframeApp").setAttribute("style","width:"+widthMaster+"px;height:"+heightMaster+"px"); 
-        alert("!!!")
+    }
+
+    setScreen();
+    window.addEventListener("orientationchange", function() {
+        setScreen();
     }, false);
 </script>
