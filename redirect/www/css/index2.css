@@ -1,6 +1,9 @@
 .app iframe{
-    height: 1000px;
-    margin-left: -10px;
-    margin-top: -10px;
-    width: 105%;
+/*    margin-left: -10px;
+    margin-top: -10px;*/
+    border: 0px;
+    overflow-y: hidden;
+    margin-left: -8px;
+    margin-top: -8px;
 }
+

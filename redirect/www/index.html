@@ -17,6 +17,7 @@
 </html>
 <script type="text/javascript">
     //document.getElementById("iframeApp").style.height = window.screen.availHeight;
-    document.getElementById("iframeApp").setAttribute("style","height:"+window.screen.availHeight+"px"); 
-    console.log("!!!!")
+    var heightMaster = window.screen.availHeight * 0.85;
+    var widthMaster = window.screen.availWidth;
+    document.getElementById("iframeApp").setAttribute("style","width:"+widthMaster+"px;height:"+heightMaster+"px"); 
 </script>
