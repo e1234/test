@@ -1,0 +1,11 @@
+<div layout="row" layout-wrap layout-align="start center" style="width:100%;">
+    <span class="mini-card-no-ink text-primary" ng-repeat="(k, c) in trb.col">{{c.resumen}}<small ng-click="trb.remove(k)">x</small></span>
+    <div style=" width: auto; text-align:left;" class="animation-slide">
+        <input type="text" class="my-input" ng-model="prefilter" ng-keydown="keypress($event)" placeholder="search">
+    </div>
+    <div class="turbo-chosen-container md-whiteframe-z2" ng-show="(filtered.length)">
+        <div class="component" ng-repeat="(key, col) in filtered">
+            <span>{{col.resumen}}</span>
+        </div>
+    </div>
+</div>

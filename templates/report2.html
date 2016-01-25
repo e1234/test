@@ -1,0 +1,743 @@
+<md-toolbar class="rotate-screen" layout="column" layout-align="center center" md-theme="md-accent">
+    <ng-md-icon icon="screen_rotation" style="fill: rgba(255, 255, 255, 1)" size="64"></ng-md-icon>
+    <span class="md-title" style="margin: 2em auto; text-align: center;">In order to use the report please rotate your device</span>
+</md-toolbar>
+<div class="report-wrapper no-select" ng-click="closeTabMenu()" style="flex:1;" divheight="zero">
+    <div class="no-connection md-caption text-primary" layout="row" layout-align="start center" ng-show="!socketConnected">
+        <ng-md-icon icon="info" style="fill:rgba(0, 0, 0, 0.54); margin:0 auto;" size="20"></ng-md-icon>
+        <span>No connection to server</span>
+    </div>
+    <md-toolbar layout="row">
+        <div layout="row" style="width: 250px; max-width: 250px; min-width: 250px; margin-top: 25px; height: 34px;" ng-show="true">
+            <div style="margin-left:1em;" layout="row">
+                <ng-md-icon icon="search" style="fill:#fff; margin-top: 4px;" size="16"></ng-md-icon>
+                <input type="text" class="input-report-search" placeholder="{{textos.home.search}}" ng-model="searchId" ng-enter="getReport()">
+                <md-button style="min-width: 40px; margin: 0;" ng-click="getReport()">ok</md-button>
+            </div>
+            <md-button class="md-icon-button" aria-label="smartadtags" ng-click="pinSidebar()" style="margin: 0; margin-top: -5px;" ng-class="{ active: sideBar }">
+                <ng-md-icon icon="{{pin}}" options="{'duration':450}" style="fill: white;" size="20"></ng-md-icon>
+            </md-button>
+        </div>
+        <div style="width:100%; height:64px;">
+            <div class="flexbox" style="width:100%; height:65px; padding-left:10px; ">
+                <div ng-style="{'z-index': tab.zIndex, 'margin-left': getMargin(k)}" ng-repeat="(k,tab) in tabs" ng-right-click="openTabMenu(k, $event);" ng-middle-click="removeTab(k);" ng-drag="">
+                    <div class="flexbox" ng-class="tab.clase" ng-click="selectTab(k)">
+                        <div ng-class="'tab1'+tab.disabled">
+                            <ng-md-icon icon="{{getTabIcon(k)}}" style="fill:black; position:relative; left:15px;" size="16"></ng-md-icon>
+                        </div>
+                        <div class="md-body-1" ng-class="'tab2'+tab.disabled" ng-show="!editTab" style="line-height: 30px;">{{tab.name+tab.sufix}}</div>
+                        <input type="text" style="max-width: 115px;" ng-model="newName" ng-show="editTab" ng-enter="changeTabName(k, newName); editTab = !editTab; newName='';" ng-esc="editTab = !editTab; newName=''" focus-me="{{focus}}">
+                        <div ng-class="'tab3'+tab.disabled">
+                            <ng-md-icon icon="cancel" class="close-tab" size="16" ng-click="removeTab(k);"></ng-md-icon>
+                        </div>
+                    </div>
+                    <div class="my-menu md-whiteframe-z2" style="position: absolute; z-index: 9999 !important;" ng-style="{'margin-left': tabMenuLeft, 'margin-top': tabMenuTop}" ng-show="tab.tabMenu">
+                        <ul class="my-menu-items">
+                            <li class="my-menu-items-hover" ng-click="editTab = !editTab; tabMenu = false; focus='true'">
+                                <ng-md-icon icon="mode_edit" class="my-menu-icon" size="20"></ng-md-icon>
+                                Change name
+                            </li>
+                            <li class="my-menu-items-hover" ng-click="regenerate(tab.card); tabMenu = false" ng-show="!(tab.filterTab)">
+                                <ng-md-icon icon="refresh" class="my-menu-icon" size="20"></ng-md-icon>
+                                Regenerate report
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <md-button aria-label="smartadtags" class="md-raised md-primary new-tab-button" ng-click="addTab()" ng-disabled="false">
+                    <ng-md-icon icon="add" style="fill:white; position: relative; bottom: 7px;" size="16"></ng-md-icon>
+                </md-button>
+            </div>
+        </div>
+        <!-- CONTROLES DE VENTANA Y ADMIN OCULTOS -->
+        <div layout="row" style="height: 40px; margin-top: 24px;">
+            <!-- <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite"  ng-click="broadMenu()" ng-show="(selectedTab && !tabs[selectedTab].filterTab)">
+                <ng-md-icon icon="menu" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Table menu
+                </md-tooltip>
+            </md-button> -->
+
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="hideToolbar()">
+                <ng-md-icon icon="fullscreen" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    fullscreen
+                </md-tooltip>
+            </md-button>
+
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="horizontal()" ng-disabled="false" ng-show="(doubleLayout || tabs[selectedTab].editMode)">
+                <ng-md-icon icon="view_stream" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Landscape layout
+                </md-tooltip>
+            </md-button>
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="vertical()" ng-disabled="false" ng-show="(doubleLayout || tabs[selectedTab].editMode)">
+                <img src="img/column-icon.png" width="16" height="16" alt="" style="position:relative; top:4px;">
+                <md-tooltip md-direction="left">
+                    Vertical layout
+                </md-tooltip>
+            </md-button>
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="editMode();" ng-show="(selectedTab && !tabs[selectedTab].editMode && !tabs[selectedTab].filterTab && !tabs[selectedTab].card2)">
+                <ng-md-icon icon="edit" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Edit report
+                </md-tooltip>
+            </md-button>
+            <!-- <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="resetFilters();" ng-show="(tabs[selectedTab].filterTab || tabs[selectedTab].editMode)">
+                <ng-md-icon icon="delete" style="fill:white" size="24"></ng-md-icon>
+            </md-button> -->
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="cancelEdit();" ng-show="(tabs[selectedTab].editMode)">
+                <ng-md-icon icon="clear" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Cancel editing
+                </md-tooltip>
+            </md-button>
+            <md-button hide aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite" ng-click="settings($event);">
+                <ng-md-icon icon="settings" style="fill:white" size="24"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Settings
+                </md-tooltip>
+            </md-button>
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite">
+                <ng-md-icon icon="access_time" style="fill:white;"></ng-md-icon>
+                <md-tooltip md-direction="left">
+                    Reports last update: {{ millisToUTCDate(lastUpdate) | date:'HH:mm' }} GMT - {{ lastUpdate | date:'HH:mm' }} Local
+                </md-tooltip>
+            </md-button>
+            <md-button aria-label="smartadtags" class="md-icon-button md-icon-button-small" aria-label="Favorite">
+                <ng-md-icon icon="lens" size="18" ng-style="{'fill': (socketConnected?'#00C853':'#F44336')}"></ng-md-icon>
+                <md-tooltip md-direction="left" ng-if="socketConnected">
+                    Connected to report server
+                </md-tooltip>
+                <md-tooltip md-direction="left" ng-if="!socketConnected">
+                    No connection to the server
+                </md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div class="r-container" layout="row" ng-style="{'height': (zero-64)+'px'}">
+        <div class="sidebar animation-sidebar" ng-show="sideBar" ng-click="closeMenu()">
+            <md-progress-circular class="md-primary loading-reports-cards" ng-show="waitingReports"></md-progress-circular>
+            <div class="no-report-text md-caption" ng-show="!(reports.length) && !waitingReports">
+                There isn't any report request you can search for previous reports or make a new one
+            </div>
+            <div layout="column" style="padding:0;">
+                <md-list style="padding:0;">
+                    <md-list-item class="md-3-line" layout="column" ng-repeat="(key, report) in reports track by $index | filter:reportName" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)" ng-right-click="openMenu(key, $event); $event.stopPropagation();">
+                    <!-- <md-list-item class="md-3-line" layout="column" ng-repeat="(key, report) in reports | filter:reportName" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)"> -->
+                        <!-- MENU VIEJO -->
+                        <div class="my-menu md-whiteframe-z2" ng-right-click="$event.stopPropagation()" ng-show="report.menuOpen" ng-style="{'margin-left': menuLeft, 'margin-top': menuTop}">
+                            <ul class="my-menu-items">
+                                <li class="my-menu-items-hover" ng-click="openNewTab(report);">
+                                    <ng-md-icon icon="open_in_new" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Open report in new tab</span>
+                                </li>
+                                <li class="my-menu-items-hover sub-menu-shoot" ng-click="toggleSubMenu(key); $event.$stopPropagation();">
+                                    <ng-md-icon icon="open_in_browser" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Open report in...</span>
+                                    <div class="sub-menu-card md-whiteframe-z2">
+                                        <span class="sub-menu-item" ng-repeat="(tkey, tab) in tabs" ng-show="tkey && !(tab.filterTab)" ng-click="openIn(report, tkey); toggleSubMenu(key);">{{tab.name+tab.sufix}}</span>
+                                    </div>
+                                </li>
+                                <span ng-show="false">
+                                    <li class="my-menu-items-hover" ng-repeat="(tkey, tab) in tabs" ng-click="openIn(report, tkey); toggleSubMenu(key);" ng-show="tkey && !(tab.filterTab)">
+                                        <span layout-fill style="width:100%; margin-left: 30px;">{{tab.name+tab.sufix}}</span>
+                                    </li>
+                                </span>
+                                <li class="my-menu-items-hover" ng-click="regenerate(report)">
+                                    <ng-md-icon icon="refresh" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Regenerate report</span>
+                                </li>
+                                <li class="my-menu-items-hover" ng-click="changeNameModal(key, $event);">
+                                    <ng-md-icon icon="edit" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Change Name</span>
+                                </li>
+                                <li class="my-menu-items-hover" ng-click="addTab(null, report);">
+                                    <ng-md-icon icon="filter_list" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Load filters in new tab</span>
+                                </li>
+                                <li class="my-menu-items-hover" ng-click="changeNameModal(key, $event);" hide>
+                                    <ng-md-icon icon="error" class="my-menu-icon" size="20"></ng-md-icon>
+                                    <span>Prioritize</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="report-card md-whiteframe-z1" ng-class="{'md-whiteframe-10dp':(report.number == tabs[selectedTab].card.number), 'md-whiteframe-1dp':(report.number != tabs[selectedTab].card.number)}">
+                            <div hide class="report-card-loading" layout="row" layout-align="center center">
+                                 <md-progress-circular md-mode="indeterminate" md-diameter="40px"></md-progress-linear>
+                            </div>
+                            <md-toolbar class="md-primary md-hue-1" style="min-height:40px;">
+                                <div layout="row" layout-fill>
+                                    <!-- <div layout="column"> -->
+                                        <span class="md-caption" style="width:100%; margin:auto; margin-left:0.5em;"># {{report.number}}</br><span style="font-size:10px;">{{report.timestamp | date:'dd/MM/yyyy - HH:mm:ss'}}</span></span>
+                                    <md-button class="md-icon-button md-icon-button-extra-small" aria-label="Settings" ng-click="openNewTab(report); myMenu=false;">
+                                        <ng-md-icon icon="open_in_new" style="fill:white; height:35px; margin-top: -7px;" size="16"></ng-md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button md-icon-button-extra-small" aria-label="Settings" ng-click="openMenu(key, $event); $event.stopPropagation();">
+                                        <ng-md-icon icon="menu" style="fill:white; height:35px; margin-top: -7px;" size="16"></ng-md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button md-icon-button-extra-small" aria-label="close" ng-click="removeCard($event, key)">
+                                        <ng-md-icon icon="close" style="fill:white; height:35px; margin-top: -7px;" size="16"></ng-md-icon>
+                                    </md-button>
+                                </div>
+                            </md-toolbar>
+                            <span ng-click="openNewTab(report);">
+                                <div class="report-card-data">
+                                    <span layout="row" style="width: 100%;">
+                                        <!-- <span layout="row" layout-align="start start" class="text-secondary" style="text-align:center; width: 50%; font-size:10px; margin:7px 0 7px 0;">{{report.timestamp | date:'dd/MM/yyyy HH:mm:ss'}}</span> -->
+                                        <span class="text-secondary" style="margin:7px 4px 7px 0; font-size:10px;">{{getUserName(report.creator)}}</span>
+                                    </span>
+                                    <span layout="row" layout-align="center center" class="md-body-2" style="text-align:center; width:100%;">{{report.reportName}}</span>
+                                    <span layout="row" layout-align="center center" style="text-align:center; width:100%; font-size:10px;" ng-class="{'ready-report': (report.state==='Ready'), 'error-report': (report.state==='Error downloading' || report.state==='Session expired'), 'pending-report': (report.state!='Ready' && report.state!='Error downloading' && report.state!='Session expired')}">{{report.state}}</span>
+                                    <!-- <span layout="row" layout-align="center center">
+                                        <md-button class="md-fab md-mini md-primary">
+                                            <ng-md-icon icon="open_in_new" style="fill:white" size="15"></ng-md-icon>
+                                            <md-tooltip md-direction="left">
+                                                Generate new report
+                                            </md-tooltip>
+                                        <md-button>
+                                    </span> -->
+                                    <div layout="column" layout-align="center center">
+                                        <span class="text-secondary" style="font-size:10px; margin:5px 0 5px 0;">{{report.filterDesc?report.filterDesc:'no filters or groups'}}</span>
+                                        <span class="text-secondary" style="font-size:10px; margin:5px 0 5px 0;">from {{report.filters.dateValue1 | date:'dd/MM/yyyy'}} to {{report.filters.dateValue2 | date:'dd/MM/yyyy'}} by {{report.interval}}</span>
+                                    </div>
+                                </div>
+
+                            </span>
+                            <div layout="row" layout-align="center center">
+                                <div style="width:100%; height:3px; background-color:#E0E0E0;" ng-if="(report.dwn)">
+                                    <div class="progress-bar-inside" style="width:25%; background-color:#4CAF50; height:3px;">
+                                    </div>
+                                </div>
+                                <div class="report-bar" ng-class="{'pending': (report.state!='Ready' && report.state!='Error downloading' && report.state!='Session expired'), 'ready': (report.state==='Ready'), 'error': (report.state==='Error downloading' || report.state==='Session expired')}" ng-show="!(report.dwn)">
+                                    <span style="color: #FFFFFF;" ng-click="regenerate(report); $event.stopPropagation();" ng-show="(report.state==='Error downloading' || report.state==='Session expired')">RETRY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </div>
+        <div class="container" ng-click="cal1=false" ng-mousemove="mousemove($event)" ng-mouseup="mouseup()" ng-class="{'no-select': resizing}" ng-sidebar-hover="sidebarHover();" stop-hover="sidebarLeft()">
+            <div class="report-container" ng-class="{'report-container-row': layout, 'report-container-column': !layout}">
+                <div style="display:flex; flex-direction:row; margin:10px; padding:1em;" ng-show="false">
+                    <md-checkbox aria-label="smartadtags md-primary">Only active li</md-checkbox>
+                </div>
+                <div class="one-half table-select" style="position: relative;" ng-style="{'height': h1, 'width': w1}" divheight="one" ng-show="(tabs[selectedTab].card)">
+                    <!-- <div style="overflow-x:scroll; margin:0 auto; height: 100%;"> -->
+                        <div style="overflow-x: auto; height: 100%; min-height: 300px; width: auto;" ui-grid="tableData" class="grid" ui-grid-auto-resize ui-grid-resize-columns ui-grid-move-columns ui-grid-pagination ui-grid-grouping ui-grid-exporter ui-grid-save-state ng-if="tableData.data"></div>
+                    <!-- </div> -->
+                    <div layout="column" layout-align="center center" style="position:absolute; width: 100%; height: 100%; background-color: rgba(150, 150, 150, 0.8);  top: 0; left: 0;" ng-show="tabs[selectedTab].loading1">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                        <span style="color: white;">Loading report</span>
+                    </div>
+                </div>
+
+                <div style="background-color: #aeaeae; min-height: 5px; width: 100%; cursor: row-resize;" ng-mousedown="mousedown($event); $event.stopPropagation();" ng-show="((!layout && selectedTab && doubleLayout)||(!layout && tabs[selectedTab].editMode))"></div>
+                <div style="background-color: #aeaeae; min-width: 5px; height: 100%; cursor: col-resize;" ng-show="((layout && selectedTab && doubleLayout)||(layout && tabs[selectedTab].editMode))" ng-mousedown="mousedown($event); $event.stopPropagation();"></div>
+
+                <div id="window1" class="one-half-filters" divheight="two" ng-show="(!selectedTab || tabs[selectedTab].editMode || (!tabs[selectedTab].card && !tabs[selectedTab].card2))" ng-fast-click="resetLiFilter(); resetWebsiteFilter();" ng-style="{'height': h1, 'width': w1}">
+                    <md-button class="md-fab md-mini md-hue-3" aria-label="Eat cake" style="position: fixed; bottom: 85px; right: 29px;" ng-show="tabs[selectedTab].editMode" ng-click="generateReport1(true)">
+                        <ng-md-icon icon="open_in_new" style="fill:white" size="15"></ng-md-icon>
+                        <md-tooltip md-direction="left">
+                            {{textos.home.generateNewReport}}
+                        </md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-hue-3" aria-label="Eat cake" style="position: fixed; bottom: 85px; right: 29px; background-color: rgb(255,82,82);" ng-show="(!tabs[selectedTab].card && !tabs[selectedTab].card2)" ng-click="resetFilters()">
+                        <ng-md-icon icon="delete" style="fill:white" size="15"></ng-md-icon>
+                        <md-tooltip md-direction="left">
+                            {{textos.home.resetFilters}}
+                        </md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-mini md-hue-3" aria-label="Eat cake" style="position: fixed; bottom: 140px; right: 29px; background-color: rgb(255,82,82);" ng-show="tabs[selectedTab].editMode" ng-click="resetFilters()">
+                        <ng-md-icon icon="delete" style="fill:white" size="15"></ng-md-icon>
+                        <md-tooltip md-direction="left">
+                            {{textos.home.resetFilters}}
+                        </md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab md-primary md-whiteframe-12dp" aria-label="Eat cake" style="position: fixed; bottom: 15px; right: 20px; padding:0;" ng-show="gettingReport || waitingReports">
+                        <md-progress-circular md-mode="indeterminate" class="md-accent" md-diameter="56"></md-progress-circular>
+                    </md-button>
+                    <md-button class="md-fab md-primary" aria-label="Eat cake" ng-click="generateReport1()" style="position: fixed; bottom: 15px; right: 20px;" ng-show="!gettingReport && !waitingReports">
+                        <ng-md-icon icon="check" style="fill:white" size="20"></ng-md-icon>
+                        <md-tooltip md-direction="left" ng-if="!(tabs[selectedTab].editMode)">
+                            {{textos.home.generateNewReport}}
+                        </md-tooltip>
+                        <md-tooltip md-direction="left" ng-if="(tabs[selectedTab].editMode)">
+                            Update report
+                        </md-tooltip>
+                    </md-button>
+                    <div class="filters-container" layout="column">
+                        <div class="date-interval-cont flexbox">
+                            <div class="flexbox calendar-timezone">
+                                <!-- <ng-md-icon icon="event_note" style="fill:black; margin-right:10px;" size="20"></ng-md-icon>
+                                <span class="md-body-1" style="margin-right:1em;">Date intervals</span> -->
+                                <div class="calendar-container" ng-click="cal1=true; $event.stopPropagation()">
+                                    <!-- <div class="my-calendar-report"> -->
+                                        <!-- <div class="date-origin">{{dateValue1 | date:'dd/MM/yyyy'}}</div>
+                                        <time-date-picker ng-model="dateValue1" ng-show="cal1" display-mode="date"></time-date-picker> -->
+                                        <md-datepicker ng-model="dateValue1"></md-datepicker>
+                                    <!-- </div> -->
+                                    <!-- <div class="my-calendar-report"> -->
+                                        <!-- <div class="date-end">{{dateValue2 | date:'dd/MM/yyyy'}}</div>
+                                        <time-date-picker ng-model="dateValue2" ng-show="cal1" display-mode="date"></time-date-picker> -->
+                                        <md-datepicker ng-model="dateValue2" md-min-date="dateValue1"></md-datepicker>
+                                    <!-- </div> -->
+
+
+                                    <md-menu md-offset="0 -7">
+                                        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                                            <md-tooltip>Dates shortcuts</md-tooltip>
+                                            <ng-md-icon icon="event_note" style="fill:rgba(0, 0, 0, 0.54);" size="24"></ng-md-icon>
+                                        </md-button>
+                                        <md-menu-content width="6">
+                                            <md-menu-item ng-click="setToday()"><md-button>Today</md-button></md-menu-item>
+                                            <md-menu-item ng-click="setL7D()"><md-button>Last 7 days</md-button></md-menu-item>
+                                            <md-menu-item ng-click="setL15D()"><md-button>Last 15 days</md-button></md-menu-item>
+                                            <md-menu-item ng-click="setCM()"><md-button>Current Month</md-button></md-menu-item>
+                                        </md-menu-content>
+                                    </md-menu>
+                                </div>
+
+                                <!-- <md-input-container class="dates-select">
+                                    <label>Calendar Intervals</label>
+                                    <md-select ng-model="none">
+                                        <md-option ng-value="Today" ng-click="setToday()">Today</md-option>
+                                        <md-option ng-value="Last 7 days" ng-click="setL7D()">Last 7 days</md-option>
+                                        <md-option ng-value="Last 15 days" ng-click="setL15D()">Last 15 days</md-option>
+                                        <md-option ng-value="Current Month" ng-click="setCM()">Current Month</md-option>
+                                    </md-select>
+                                </md-input-container> -->
+                                <md-input-container class="timezone-select">
+                                    <label>Timezone</label>
+                                    <md-select ng-model="timezone">
+                                        <md-option ng-value="tz" ng-repeat="tz in timezones">{{tz.description}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+
+
+
+                            <!-- <div class="days-buttons-wrapp">
+                                <md-button class="md-raised" ng-click="setToday()">today</md-button>
+                                <md-button class="md-raised" ng-click="setL7D()">
+                                    7d
+                                    <md-tooltip md-direction="bottom">
+                                        Last 7 days
+                                    </md-tooltip>
+                                </md-button>
+                                <md-button class="md-raised" ng-click="setL15D()">
+                                    15d
+                                    <md-tooltip md-direction="bottom">
+                                        Last 15 days
+                                    </md-tooltip>
+                                </md-button>
+                                <md-button class="md-raised" ng-click="setCM()">
+                                    Month
+                                    <md-tooltip md-direction="bottom">
+                                        Current month
+                                    </md-tooltip>
+                                </md-button>
+                            </div> -->
+
+                        </div>
+
+
+
+                        <div layout="row" layout-wrap layout-align="start center">
+                            <div class="time-interval-title">
+                                <ng-md-icon icon="av_timer" style="fill:rgba(0, 0, 0, 0.54); margin-right:10px;" size="24"></ng-md-icon>
+                                <span class="md-body-1" style="margin-right: 1em;">{{textos.home.timeInterval}}</span>
+                            </div>
+                            <div class="time-interval-check">
+                                <md-checkbox class="filter-checkbox md-primary" ng-model="hourInterval" aria-label="Finished?"><span class="no-select">{{textos.home.hour}}</span></md-checkbox>
+                                <md-checkbox class="filter-checkbox md-primary no-select" ng-model="dayInterval" aria-label="No Ink Effects"><span class="no-select">Date</span></md-checkbox>
+                                <md-checkbox class="filter-checkbox md-primary no-select" ng-model="weekdayInterval" aria-label="Disabled"><span class="no-select">Week day</span></md-checkbox>
+                                <md-checkbox class="filter-checkbox md-primary no-select" ng-model="monthInterval" aria-label="Disabled"><span class="no-select">{{textos.home.month}}</span></md-checkbox>
+                                <md-checkbox class="filter-checkbox md-primary no-select" ng-model="yearInterval" aria-label="Disabled"><span class="no-select">{{textos.home.year}}</span></md-checkbox>
+                            </div>
+                        </div>
+                        <div class="hours-wrapp" layout="column">
+                            <div ng-click="abrirHoras()" class="view-hours">
+                                <ng-md-icon icon="access_time" class="clock-icon" size="24"></ng-md-icon>
+                                <span class="md-body-1 no-select" style="margin-left:10px;">{{textos.home.selectedHours}}</span>
+                            </div>
+                            <div ng-show="horas" class="hours">
+                                <div layout="row" layout-align="start center" style="    margin-left: 1em;">
+                                    <md-button aria-label="smartadtags" md-no-ink class="md-primary" style="font-size:12px;" ng-click="markAll(true)">Mark all</md-button>
+                                    <md-button aria-label="smartadtags" style="font-size:12px;" ng-click="markAll(false)">Unmark all</md-button>
+                                    <span class="text-secondary md-caption" style="margin-right:15px;">Click and drag the pointer across the hours in order to select a range</span>
+                                </div>
+
+                                <div class="no-select" layout="row" layout-wrap style="overflow:hidden; margin-left: 1em;">
+                                    <div layout="row" ng-class="{'hour-selected': selectedHours[h.time]}" layout-align="center center" class="md-whiteframe-z1 hour" ng-mousedown="clkHour(h)" ng-mouseover="selHour(h, $event)" ng-repeat="(k,h) in hours" ng-style="{'-webkit-animation-delay': (k+1)/50+'s', 'animation-delay': (k+1)/50+'s'}">{{h.display}}</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="column" style="width:100%; text-align:left; margin-top:1em; margin-bottom:1em;">
+                            <div ng-click="abrirFiltros()" class="view-hours no-select">
+                                <ng-md-icon icon="filter_list" class="clock-icon" size="24"></ng-md-icon>
+                                <span class="md-body-1" style="margin-left:10px;">{{textos.home.prefilter}}</span>
+                            </div>
+                            <div ng-show="preFilters" style="margin-top:-40px; margin-right:0.5em; margin:0 1em;">
+                                <div layout="row" layout-align="start center">
+                                    <md-button aria-label="smartadtags" md-no-ink class="md-primary" style="font-size:12px;" ng-click="markAllCol()">Mark all</md-button>
+                                    <md-button aria-label="smartadtags" style="font-size:13px;" ng-click="unmarkAllCol()">Unmark all</md-button>
+                                </div>
+                                <div layout="row" layout-align="start center" layout-wrap>
+                                    <div layout="row" ng-class="{'hour-selected': c.status}" ng-style="{'-webkit-animation-delay': (k+1)/200+'s', 'animation-delay': (k+1)/200+'s'}" layout-align="center center" class="md-whiteframe-z1 pre-filter no-select" ng-repeat="(k, c) in preFilterData" ng-click="c.status = !c.status">{{c.viewName}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="column" style="text-align:left; margin-top:1em; margin-bottom:1em; margin-left: 1em; max-width:300px;" ng-show="!(tabs[selectedTab].editMode)">
+                            <md-switch class="md-primary swicth-report" ng-model="openWhenReady" aria-label="Switch 1" style="margin-left:0;">
+                                <span class="md-body-1">{{textos.home.openWhenReportIsReady}}</span>
+                            </md-switch>
+                        </div>
+                        <div layout="row" class="filter-details">
+                            <span class="md-caption text-secondary no-select">{{textos.home.groupBy}}</span>
+                            <span class="md-caption text-secondary no-select">{{textos.home.filterByDefault}}</span>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+
+
+                    <div class="filters-layout">
+                        <div ng-style="{'order': orders.Manager}" class="filter" ng-class="{'filter-included': !(notManager), 'filter-excluded': notManager}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Manager')">Manager</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="managerGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'accountManagers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.managerFilter" ng-options="c.amId as (c.amId+' - '+c.amName+' '+c.amLastName) for c in accountManagers" chosen style="width:100%;" ng-if="accountManagers"></select>
+                            </div>
+                        </div>
+                        <div ng-style="{'order': orders.Publisher}" class="filter" ng-class="{'filter-included': !(notPublisher), 'filter-excluded': notPublisher}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Publisher')">Publisher</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="publisherGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'publishers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width:100%;">
+                                <span class="mini-card-no-ink text-primary" ng-repeat="(key, p) in publisherFilter">{{p.userEmail}}<small ng-click="removePub(key)">x</small></span>
+                                <span ng-show="!(publishers.length)" class="md-caption text-disabled cursor-arrow">loading publishers...</span>
+                                <div style=" width: auto; text-align:left;" class="animation-slide" ng-show="publishers.length">
+                                    <input type="text" class="my-input" ng-model="publishersPreFilter" ng-keydown="keypressPublisher($event)" placeholder="add filters.." focus-me="{{focusPub}}">
+                                </div>
+                                <div class="results-container md-whiteframe-z2" ng-show="(filteredPublishers.length)" ng-class="{'results-container-sidebar-open': sideBar, 'results-container-sidebar-close': (!sideBar)}" turbo-scroll="morePub()">
+                                    <div ng-class="{'component-list': (pkey.pubSel!==key), 'component-sel':(pkey.pubSel===key)}" class="component" ng-repeat="(key, pub) in filteredPublishers | limitTo: pubCant" ng-if="(filteredPublishers.length)" ng-click="addPub(pub)" ng-mouseover="pkey.pubSel=key;">
+                                        <span>{{pub.resumen}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="filter filter-excluded"> -->
+                        <div ng-style="{'order': orders.Website}" class="filter" ng-class="{'filter-included': !(notWebsite), 'filter-excluded': notWebsite}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Website')">Website</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="websiteGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'websites')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%" ng-if="(!publisherFilter.length)">
+                                <span class="mini-card-no-ink text-primary" ng-repeat="(key, p) in selecteds.websiteFilter">{{p.webUrl}}<small ng-click="removeWeb(key)">x</small></span>
+                                <span ng-show="!(websites.length)" class="md-caption text-disabled cursor-arrow">loading websites...</span>
+                                <div style=" width: auto; text-align:left;" class="animation-slide" ng-show="(websites.length)">
+                                    <input type="text" class="my-input" ng-model="selecteds.websitesPreFilter" ng-keydown="keypressWebsite($event)" placeholder="add filters.." focus-me="{{focusWeb}}">
+                                </div>
+                                <div class="results-container md-whiteframe-z2" ng-show="(filteredWebsites.length)" ng-class="{'results-container-sidebar-open': sideBar, 'results-container-sidebar-close': (!sideBar)}" turbo-scroll="moreWeb()">
+                                    <div ng-class="{'component-list': (wkey.webSel!==key), 'component-sel':(wkey.webSel===key)}" class="component" ng-repeat="(key, web) in filteredWebsites | limitTo: webCant" ng-if="(filteredWebsites.length)" ng-fast-click="addWeb(web)" ng-mouseover="wkey.webSel=key;">
+                                        <span>{{web.resumen}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <select class="filter-chosen" id="websites-multiple" data-placeholder="add filters.." multiple ng-model="selecteds.websiteFilter" ng-options="w.webId as (w.webId+' - '+w.webUrl) for w in websitesByPublisher" chosen="websitesByPublisher" style="width:100%;" ng-if="publisherFilter.length"></select>
+                        </div>
+
+
+
+                        <div ng-style="{'order': orders.Section}" class="filter" ng-class="{'filter-included': !(notSection), 'filter-excluded': notSection}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Section')">Section</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="sectionsGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'section')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%" ng-show="!(publisherFilter.length || selecteds.websiteFilter.length)">
+                                <span class="mini-card-no-ink" ng-repeat="(key, p) in selecteds.sectionsFilter">{{p}}<small ng-click="removeSection(key)">x</small></span>
+                                <div style=" width: auto; text-align:left;" class="animation-slide">
+                                    <input type="number" class="my-input" ng-model="adId" ng-enter="addSection()" placeholder="add filters.." focus-me="{{focusSection}}">
+                                </div>
+                            </div>
+                            <select class="filter-chosen" id="ads-multiple" data-placeholder="add filters.." multiple ng-model="selecteds.sectionFilter" ng-options="c.adsId as (c.adsId+' - '+c.adsName) for c in adsByPublisher" chosen style="width:100%;" ng-if="(publisherFilter.length || selecteds.websiteFilter.length)"></select>
+                        </div>
+
+                        <div ng-style="{'order': orders.Offer}" class="filter" ng-class="{'filter-included': !(notOffer), 'filter-excluded': notOffer}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Offer')">Offer</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="offerGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'offers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width:100%;">
+                                <span class="mini-card-no-ink text-primary" ng-repeat="(key, o) in selecteds.offersFilter">{{o.offerName}}<small ng-click="removeOffer(key)">x</small></span>
+                                <span ng-show="!(offers.length)" class="md-caption text-disabled cursor-arrow">loading offers...</span>
+                                <div style=" width: auto; text-align:left;" class="animation-slide" ng-show="offers.length">
+                                    <input type="text" class="my-input" ng-model="offersPreFilter" ng-keydown="keypressOffers($event)" placeholder="add filters..">
+                                </div>
+                                <div class="results-container md-whiteframe-z2" ng-show="(filteredOffers.length)" ng-class="{'results-container-sidebar-open': sideBar, 'results-container-sidebar-close': (!sideBar)}" turbo-scroll="moreOffers()">
+                                    <div ng-class="{'component-list': (okey.offSel!==key), 'component-sel':(okey.offSel===key)}" class="component" ng-repeat="(key, off) in filteredOffers | limitTo: offCant" ng-if="(filteredOffers.length)" ng-click="addOffer(off)" ng-mouseover="okey.offSel=key;">
+                                        <span>{{off.resumen}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Line}" class="filter" ng-class="{'filter-included': !(notLi), 'filter-excluded': notLi}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Li')">Line Item</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="liGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'lineitem')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <span class="mini-card-no-ink text-primary" ng-repeat="(key, p) in liFilter">{{p.liName}}<small ng-click="removeLi(key)">x</small></span>
+                                <div style="position:relative; width:auto; text-align:left;" class="animation-slide">
+                                    <input type="text" class="my-input" style="width:100%;" ng-model="selecteds.liPreFilter" ng-keydown="keypressLi($event); $event.stopPropagation();" focus-me="{{focusLi}}"  placeholder="add filters..">
+
+                                </div>
+                                <div class="results-container md-whiteframe-z2" ng-show="(filteredLi.length)" ng-class="{'results-container-sidebar-open': sideBar, 'results-container-sidebar-close': (!sideBar)}">
+                                    <div ng-class="{'component-list': (lkey.liSel!==key), 'component-sel':(lkey.liSel===key)}" class="component" ng-repeat="(key, li) in filteredLi" ng-if="(filteredLi.length)" ng-fast-click="addLi(li); $event.preventDefault();" ng-mouseover="lkey.liSel=key;">
+                                        <span>{{li.resumen}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Channel}" class="filter" ng-class="{'filter-included': !(notChannel), 'filter-excluded': notChannel}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Channel')">Channel</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="channelGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'channels')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" id="channels" data-placeholder="add filters.." multiple ng-model="selecteds.channelFilter" ng-options="c.chaId as (c.chaId+' - '+c.chaName) for c in channels" chosen ng-if="channels"></select>
+                            </div>
+
+                        </div>
+
+                        <div ng-style="{'order': orders.Country}" class="filter" ng-class="{'filter-included': !(notCountry), 'filter-excluded': notCountry}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Country')">Country</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="countryGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'countries')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.countryFilter" ng-options="c.countryCode as (c.countryId+' - '+c.countryName) for c in countries" chosen style="width:100%;" ng-if="countries"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Size}" class="filter" ng-class="{'filter-included': !(notSize), 'filter-excluded': notSize}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Size')">Size</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="sizeGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'sizes')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.sizeFilter" ng-options="c.sizeId as (c.sizeId+' - '+c.sizeDescription) for c in sizes" chosen style="width:100%;" ng-if="sizes"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Creative}" class="filter" ng-class="{'filter-included': !(notCreative), 'filter-excluded': notCreative}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Creative')">Creative</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="creativeGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-disabled="true">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <span class="mini-card-no-ink" ng-repeat="(key, p) in selecteds.creativeFilter">{{p}}<small ng-click="removeCreative(key)">x</small></span>
+                                <div style=" width: auto; text-align:left;" class="animation-slide">
+                                    <input type="number" class="my-input" ng-model="creativeId" ng-enter="addCreative()" placeholder="add filters..">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Hash}" class="filter" ng-class="{'filter-included': !(notHash), 'filter-excluded': notHash}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Hash')">Hash</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="hashGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'hashes')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.hashFilter" ng-options="c.hashId as (c.hashId) for c in hashes" chosen style="width:100%;" ng-if="hashes"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Adv}" class="filter" ng-class="{'filter-included': !(notAdvManager), 'filter-excluded': notAdvManager}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('AdvManager')">Adv Manager</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="advManagerGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'advManagers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.advManagerFilter" ng-options="c.acaId as (c.acaId+' - '+c.acaName) for c in advManagers" chosen style="width:100%;" ng-if="advManagers"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Advertiser}" class="filter" ng-class="{'filter-included': !(notAdvertiser), 'filter-excluded': notAdvertiser}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Advertiser')">Advertiser</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="advertiserGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'advertisers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.advertiserFilter" ng-options="c.advId as (c.advId+' - '+c.advName) for c in advertisers" chosen style="width:100%;" ng-if="advertisers"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Tries}" class="filter" ng-class="{'filter-included': !(notTries), 'filter-excluded': notTries}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Tries')">Tries</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="tryGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'tries')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.tryFilter" ng-options="c.trieId as c.trieName for c in tries" chosen style="width:100%;" ng-if="tries"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Device}" class="filter" ng-class="{'filter-included': !(notDevice), 'filter-excluded': notDevice}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Device')">Device</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="deviceGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'devices')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.deviceFilter" ng-options="c.deviceAlias as (c.deviceId+' - '+c.deviceName) for c in devices" chosen style="width:100%;" ng-if="devices"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Platform}" class="filter" ng-class="{'filter-included': !(notPlatform), 'filter-excluded': notPlatform}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Platform')">Platform</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="platformGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'platforms')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.platformFilter" ng-options="c.platformId as (c.platformId+' - '+c.platformName) for c in platforms" chosen style="width:100%;" ng-if="platforms"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Browser}" class="filter" ng-class="{'filter-included': !(notBrowser), 'filter-excluded': notBrowser}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Browser')">Browser</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="browserGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'browsers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.browserFilter" ng-options="c.browserId as (c.browserId+' - '+c.browserName) for c in browsers" chosen style="width:100%;" ng-if="browsers"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Carrier}" class="filter" ng-class="{'filter-included': !(notCarrier), 'filter-excluded': notCarrier}">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Carrier')">Carrier</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="carrierGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'carriers')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.carrierFilter" ng-options="c.carId as (c.carId+' - '+c.carName+' '+c.carCountry) for c in carriers" chosen style="width:100%;" ng-if="carriers"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Rank}" class="filter" ng-class="{'filter-included': !(notVersion), 'filter-excluded': notVersion}" style="border-right: 1px solid rgba(0, 0, 0, 0.12);">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Version')">Rank</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="versionGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'versions')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.versionFilter" ng-options="c.rtId as (c.rtId+' - '+c.rtName) for c in versions" chosen style="width:100%;" ng-if="versions"></select>
+                            </div>
+                        </div>
+
+                        <div ng-style="{'order': orders.Connection}" class="filter" ng-class="{'filter-included': !(notConnection), 'filter-excluded': notConnection}" style="border-right: 1px solid rgba(0, 0, 0, 0.12);">
+                            <span class="filter-name md-body-1" ng-click="negateFilter('Connection')">Connection</span>
+                            <md-checkbox aria-label="smartadtags" class="filter-checkbox md-primary" ng-model="connectionGroup"></md-checkbox>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="modalFilter($event, 'connections')">
+                                <ng-md-icon icon="search" style="fill:rgba(0, 0, 0, 0.54);" size="20"></ng-md-icon>
+                            </md-button>
+                            <div layout="row" layout-wrap layout-align="start center" style="width: 100%">
+                                <select class="filter-chosen" data-placeholder="add filters.." multiple ng-model="selecteds.connectionFilter" ng-options="c.id as (c.id+' - '+c.name) for c in connections" chosen style="width:100%;" ng-if="connections"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="column" class="filter-extra">
+                        <p class="md-subhead" style="text-align:left; margin:1em;">{{textos.home.filter}}</p>
+                        <div class="line" layout="row" ng-repeat="(key, n) in numFilters">
+                            <md-select placeholder="No filter" ng-model="n.col" class="filter-select">
+                                <md-option value="imps">Impressions</md-option>
+                                <md-option value="clicks">Clicks</md-option>
+                                <md-option value="convs">Conversions</md-option>
+                                <md-option value="revenue">Revenue</md-option>
+                                <md-option value="cost">Cost</md-option>
+                                <md-option value="profit">Profit</md-option>
+                                <md-option value="ecpm">eCPM</md-option>
+                            </md-select>
+                            <md-select placeholder=">=" ng-model="n.operator" style="margin-right:45px;">
+                                <md-option value=">=">&gt=</md-option>
+                                <md-option value="<=">&lt=</md-option>
+                                <md-option value="=">=</md-option>
+                                <md-option value=">">&gt</md-option>
+                                <md-option value="<">&lt</md-option>
+                            </md-select>
+                            <md-input-container>
+                                <label style="text-align:left;">Enter your value</label>
+                                <input type="number" ng-model="n.value">
+                            </md-input-container>
+                            <md-button aria-label="smartadtags" class="md-icon-button" ng-click="removeNFilter(key)">
+                                <ng-md-icon icon="remove_circle_outline" style="fill:#F44336;" size="24"></ng-md-icon>
+                                <md-tooltip md-direction="bottom">
+                                    Remove filter
+                                </md-tooltip>
+                            </md-button>
+                        </div>
+                        <div layout="row" layout-align="start-center" ng-hide="false" style="height:50px;">
+                            <md-select placeholder="No filter" ng-model="newCol" class="filter-select">
+                                <md-option value="imps">Impressions</md-option>
+                                <md-option value="clicks">Clicks</md-option>
+                                <md-option value="convs">Conversions</md-option>
+                                <md-option value="revenue">Revenue</md-option>
+                                <md-option value="cost">Cost</md-option>
+                                <md-option value="profit">Profit</md-option>
+                                <md-option value="ecpm">eCPM</md-option>
+                            </md-select>
+                            <md-select placeholder=">=" ng-model="newOperator" style="margin-right:45px;">
+                                <md-option value=">=">&gt=</md-option>
+                                <md-option value="<=">&lt=</md-option>
+                                <md-option value="=">=</md-option>
+                                <md-option value=">">&gt</md-option>
+                                <md-option value="<">&lt</md-option>
+                            </md-select>
+                            <md-input-container>
+                                <label style="text-align:left;">{{textos.home.EnterYourValue}}</label>
+                                <input type="number" ng-model="newValue">
+                            </md-input-container>
+                            <md-button ng-click="addNFilter()" aria-label="smartadtags" class="md-icon-button">
+                                <ng-md-icon icon="add_circle_outline" style="fill:rgba(0,0,0,0.54);" size="24"></ng-md-icon>
+                                <md-tooltip md-direction="bottom">
+                                    Add filter
+                                </md-tooltip>
+                            </md-button>
+                        </div>
+                    </div>
+<!-- ---------------                     -->
+                </div>
+                <div class="one-half table-select" ng-style="{'height': h2, 'width': w2}" divheight="three" ng-show="(selectedTab && doubleLayout)">
+                    <div id="scroll-aux" style="overflow-x:scroll; margin:0 auto; height: 100%;">
+                        <div style="width:auto; overflow-x: auto; height: 100%; min-height: 300px; position: relative;" ui-grid="tableData2" class="grid" ui-grid-auto-resize ui-grid-resize-columns ui-grid-move-columns ui-grid-pagination ui-grid-grouping ui-grid-exporter ui-grid-save-state ng-if="tableData2.data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

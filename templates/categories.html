@@ -1,0 +1,97 @@
+<!-- <div style="height:100%; overflow-y:auto;"> -->
+    <!-- <md-button class="md-fab md-accent category-edit-fab" aria-label="Eat cake" ng-click="editButton();">
+        <ng-md-icon icon="{{editIcon()}}" style="fill:black" size="20"></ng-md-icon>
+        <md-tooltip md-direction="down" ng-if="!editing">Editar</md-tooltip>
+        <md-tooltip md-direction="down" ng-if="editing">Guardar</md-tooltip>
+    </md-button> -->
+    <div class="the-wrapper" style="height:100%;">
+        <div layout="row" class="md-whiteframe-z1 white" style="height:auto;">
+            <div layout="column" flex>
+                <md-toolbar class="md-primary md-hue-1">
+                    <div class="md-toolbar-tools">
+                        <h2>
+
+                            <span><span style="margin-right:5px;">{{textos.home.category}}</span>{{categories[selectedCategory].catName}}</span>
+                        </h2>
+                        <span flex></span>
+                        <span class="md-caption">Activa</span>
+                        <span>
+                            <md-switch ng-model="(categories[selectedCategory].catUserVisible)" ng-disabled="!editing" aria-label="Switch 1">
+                            </md-switch>
+                            <md-tooltip md-direction="down">
+                                Hacer visible la categoria a los publishers
+                            </md-tooltip>
+                        </span>
+                        <md-button class="md-fab md-mini md-accent md-hue-1 category-edit-fab" aria-label="Eat cake" ng-click="editButton();">
+                            <ng-md-icon icon="{{editIcon()}}" style="fill:black" size="20"></ng-md-icon>
+                            <md-tooltip md-direction="down" ng-if="!editing">{{textos.home.edit}}</md-tooltip>
+                            <md-tooltip md-direction="down" ng-if="editing">{{textos.home.save}}</md-tooltip>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <div layout="row">
+                    <div style="width:200px; min-width:200px; border-right: 1px solid rgba(0,0,0,0.12);">
+                        <div>
+                            <md-list-item layout="row" layout-align="center center">
+                                <div class="md-list-item-text" layout="row" layout-align="center center">
+                                    <input type="text" name="name" value="" ng-model="category.name" placeholder="{{textos.home.addCategory}}" ng-enter="createCategory(category.name)" class="add-category-input">
+                                </div>
+                            </md-list-item>
+                            <div ng-repeat="(k, c) in categories">
+                                <md-list-item class="md-2-line md-aux" ng-class="{'category-selected': (k==selectedCategory)}" ng-click="selectCategory(k)">
+                                    <ng-md-icon icon="{{c.catIcon}}" style="fill:rgba(0, 0, 0, 0.54); margin:auto;" size="20"></ng-md-icon>
+                                        <div class="md-list-item-text">
+                                            <h3>{{c.catName}}</h3>
+                                        </div>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout="column" flex style="border-right: 1px solid rgba(0,0,0,0.12); height:100%;">
+                        <md-content style="height: 100%;">
+                            <section class="check-aux">
+                                <md-subheader class="md-primary" style="margin-top:1.2em;">Channels en la categoria {{categories[selectedCategory].catName}}<span style="float:right; padding-right:1em;">Default</span></md-subheader>
+                                <div ng-repeat="(k, c) in channels" ng-click="selectChannel(k)" style="cursor: pointer;">
+                                    <div layout="column" ng-class="{'category-selected': ((k==selectedChannel)&&(editing))}">
+                                        <div layout="row" layout-align="start center" style="position:relative; top:5px;">
+                                            <div ng-click="checkChannels()">
+                                                <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="c.marked" class="md-primary" ng-disabled="!editing"></md-checkbox>
+                                            </div>
+                                            <span>{{c.chaName}}</span>
+                                            <md-chips class="category-chip" ng-if="c.chaUserVisible == 0">
+                                                <md-chip class="md-caption">no visible</md-chip>
+                                            </md-chips>
+                                            <span ng-click="markDefaultCheck(c.chaId);" class="false-radio" ng-class="{'active': (c.def)}">
+                                                <md-tooltip md-direction="down">
+                                                    Al marcar como default se mostrara cuando no haya un channel o sea incorrecto
+                                                </md-tooltip>
+                                            </span>
+                                        </div>
+                                        <div layout="column">
+                                            <div class="channel-banner-type" ng-repeat="typ in c.typ">
+                                                <span ng-show="typ.marked" class="md-caption channel-banner-type-text">{{typ.typName}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <md-divider></md-divider>
+                                </div>
+                            <section>
+                        </md-content>
+                    </div>
+                    <div layout="column" flex ng-show="editing">
+                        <md-content>
+                            <section>
+                                <md-subheader class="md-primary" style="margin-top:1.2em;">Formatos en Channel {{channelSelected}} en la categoria {{categories[selectedCategory].catName}}</md-subheader>
+                                <span ng-repeat="t in channels[selectedChannel].typ">
+                                    <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="t.marked" class="md-primary" ng-disabled="!editing">{{t.typName}}</md-checkbox>
+                                    <md-divider></md-divider>
+                                <span>
+                            <section>
+                        </md-content>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

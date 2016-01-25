@@ -1,0 +1,64 @@
+<div layout="column" flex layout-fill style="height: 50%;">
+    <md-content class="flex flexbox-column" style="height: 100%; overflow-x:hidden; background-color:transparent;">
+        <section>
+
+
+            <div layout="column" style="width:100%; max-width:1200px; margin: 0 auto;">
+                <div layout="column" class="md-whiteframe-z1" style="background-color:#fff; margin: 0.5em; padding: 1em; border-radius: 3px;">
+                    <h4 flex><span class="md-title">{{textos.home.information}}</span></h4>
+                    <p class="md-body-1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                </div>
+
+                <div layout="column" class="md-whiteframe-z1" style="background-color:#fff; margin: 0.5em; padding: 1em; border-radius: 3px;" ng-repeat="(key, a) in advertisers">
+                    <h3 flex><span class="md-title">{{a.name}}</span></h3>
+                    <div layout="row">
+                        <form style="min-width: 190px; max-width: 190px;">
+                            <md-input-container style="max-width:150px;">
+                                <label>{{textos.home.addIp}}</label>
+                                <input type="text" ng-model="a.newIp" placeholder="">
+                            </md-input-container>
+                            <md-button class="md-raised" ng-click="addIp(a)">{{textos.home.add}}</md-button>
+                        </form>
+                        <div layout="row" layout-wrap>
+                            <div class="ip-chip md-body-1" ng-repeat="w in getWhitelistByAdvertiser(a.id)">{{w.wlIp}}<ng-md-icon icon="close" class="ip-chip-close" size="20" ng-click="removeIp(w.wlId, $event)"></ng-md-icon></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div layout="column" class="md-whiteframe-z1" style="background-color:#fff; margin: 0.5em; padding: 1em; border-radius: 3px;">
+                    <h3 flex><span class="md-title">Binbit</span></h3>
+                    <div layout="row">
+                        <form style="min-width: 190px; max-width: 190px;">
+                            <md-input-container style="max-width:150px;">
+                                <label>Add IP</label>
+                                <input type="text" ng-model="falseip" placeholder="192.192.192.192">
+                            </md-input-container>
+                            <md-button class="md-raised">add</md-button>
+                        </form>
+                        <div layout="row" layout-wrap>
+                            <div class="ip-chip md-body-1">192.192.192.194<ng-md-icon icon="close" class="ip-chip-close" size="20"></ng-md-icon></div>
+                            <div class="ip-chip md-body-1">192.192.192.191<ng-md-icon icon="close" class="ip-chip-close" size="20"></ng-md-icon></div>
+                            <div class="ip-chip md-body-1">192.192.192.190<ng-md-icon icon="close" class="ip-chip-close" size="20"></ng-md-icon></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout="column" class="md-whiteframe-z1" style="background-color:#fff; margin: 0.5em; padding: 1em; border-radius: 3px;">
+                    <h3 flex><span class="md-title">XL</span></h3>
+                    <div layout="row">
+                        <form style="min-width: 190px; max-width: 190px;">
+                            <md-input-container style="max-width:150px;">
+                                <label>Add IP</label>
+                                <input type="text" ng-model="falseip" placeholder="192.192.192.192">
+                            </md-input-container>
+                            <md-button class="md-raised">add</md-button>
+                        </form>
+                        <div layout="row" layout-wrap>
+                            <div class="ip-chip md-body-1"><span style="letter-spacing:10px;"> *.*.*.*</span><ng-md-icon icon="close" class="ip-chip-close" size="20"></ng-md-icon></div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </section>
+    </md-content>
+</div>

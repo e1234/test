@@ -1,0 +1,124 @@
+
+/* when hiding the thing */
+    .animation.ng-hide-add {
+      -webkit-animation:0.2s fadeOut ease;
+      animation:0.2s fadeOut ease;
+    }
+
+    /* when showing the thing */
+    .animation.ng-hide-remove {
+      -webkit-animation:0.2s fadeIn ease;
+      animation:0.2s fadeIn ease;
+
+    }
+
+    /* when showing the thing */
+    .animation-slide.ng-hide-remove {
+      -webkit-animation:0.2s fadeIn ease;
+      animation:0.2s fadeIn ease;
+    }
+
+    /* when hiding the thing */
+        .animation-slide.ng-hide-add {
+          -webkit-animation:0.2s fadeOut ease;
+          animation:0.2s fadeOut ease;
+    }
+
+    /* when showing the thing */
+    .animation-sidebar.ng-hide-remove {
+      -webkit-animation:0.2s fadeInLeft ease;
+      animation:0.2s fadeInLeft ease;
+    }
+
+    /* when hiding the thing */
+        .animation-sidebar.ng-hide-add {
+          -webkit-animation:0.3s fadeOutLeft ease;
+          animation:0.3s fadeOutLeft ease;
+    }
+
+    /* when showing the thing */
+    .animation-io.ng-hide-remove {
+      -webkit-animation:0.3s slideInDown ease;
+      animation:0.3s slideInDown ease;
+    }
+
+    /* when hiding the thing */
+        .animation-io.ng-hide-add {
+          -webkit-animation:0.2s fadeOut ease;
+          animation:0.2s fadeOut ease;
+    }
+
+
+    /* when showing the thing */
+    .animation-card.ng-hide-remove {
+      -webkit-animation:0.3s slideInDown ease;
+      animation:0.3s slideInDown ease;
+    }
+
+    /* when hiding the thing */
+        .animation-card.ng-hide-add {
+          -webkit-animation:0.2s slideInUp ease;
+          animation:0.2s slideInUp ease;
+    }
+
+    /*BARRA PROGRESO REPORTES*/
+
+    @-webkit-keyframes loading-bar {
+        0% {opacity: 0;}
+        25% {opacity:1;}
+        75% {opacity:0.3;}
+        100% {opacity:0; margin-left: 75%;}
+    }
+    @keyframes loading-bar {
+        0% {opacity: 0;}
+        25% {opacity:1;}
+        75% {opacity:0.3;}
+        100% {opacity:0; margin-left: 75%;}
+    }
+
+
+
+    /*.pre-filter:nth-child(1) {
+        -webkit-animation-delay: .1s;
+        animation-delay: .1s;
+    }
+
+    .pre-filter:nth-child(2) {
+        -webkit-animation-delay: .2s;
+        animation-delay: .2s;
+    }
+
+    .pre-filter:nth-child(3) {
+        -webkit-animation-delay: .3s;
+        animation-delay: .3s;
+    }
+
+    .pre-filter:nth-child(4) {
+        -webkit-animation-delay: .4s;
+        animation-delay: .4s;
+    }
+
+    .pre-filter:nth-child(5) {
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .pre-filter:nth-child(6) {
+        -webkit-animation-delay: .6s;
+        animation-delay: .6s;
+    }
+
+    .pre-filter:nth-child(7) {
+        -webkit-animation-delay: .7s;
+        animation-delay: .7s;
+    }
+
+    .pre-filter:nth-child(8) {
+        -webkit-animation-delay: .8s;
+        animation-delay: .8s;
+    }
+
+    .pre-filter:nth-child(9) {
+        -webkit-animation-delay: .9s;
+        animation-delay: .9s;
+    }*/

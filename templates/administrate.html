@@ -1,0 +1,1234 @@
+<!-- <div style="padding:0; width;100%; overflow:auto; height:100%;"> -->
+    <div class="the-wrapper" style="padding:0; height:100%;">
+        <div layout="column">
+<!-- TEMA BLANCO-->
+            <div class="test-wrap">
+                <div layout="row">
+                    <span flex class="md-headline">{{textos.home.themeByDefault}}</span>
+                    <!-- <md-button md-no-ink class="md-primary">save</md-button> -->
+                    <!-- <md-button class="md-icon-button">
+                        <ng-md-icon icon="play_arrow" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="timer" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button> -->
+                </div>
+                <div  class="test-row-wrap">
+                    <div layout="row" class="test-row-wrap-scroll">
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span class="f-card-text" flex>Section</span>
+                                <md-menu class="menu-section" md-theme="default">
+                                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                        <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                    </md-button>
+                                    <md-menu-content width="3" layout-padding>
+                                        <md-menu-item>
+                                            <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                                <div layout="row">
+                                                    <p flex>Clone</p>
+                                                    <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                                </div>
+                                            </md-button>
+                                        </md-menu-item>
+                                        <md-menu-item>
+                                            <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                                <div layout="row">
+                                                    <p flex>Start</p>
+                                                    <ng-md-icon icon="play_arrow" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                                </div>
+                                            </md-button>
+                                        </md-menu-item>
+                                        <md-menu-item>
+                                            <md-button>
+                                                <div layout="row">
+                                                    <p flex>Delete</p>
+                                                    <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                                </div>
+                                            </md-button>
+                                        </md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+                            </div>
+                            <md-input-container style="padding: 0; margin-right: 20px;">
+                                <md-select ng-model="user.section" md-theme="default" aria-label="select">
+                                    <md-option value="123456">123456</md-option>
+                                    <md-option value="1234">1234</md-option>
+                                    <md-option value="12345">12345</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                            <span class="f-card-text">size 800x600</span>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">country</span>
+                            </div>
+                            <md-input-container>
+                                <md-select ng-model="user.city" md-theme="default" aria-label="select">
+                                    <md-option value="Argentina">Argentina</md-option>
+                                    <md-option value="Mexico">Mexico</md-option>
+                                    <md-option value="Spain">Spain</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">device</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.devicePc" md-theme="default" aria-label="select">
+                                        <md-option value="PC">PC</md-option>
+                                        <md-option value="Mobile">Mobile</md-option>
+                                        <md-option value="Tablet">Tablet</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">os</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select">
+                                        <md-option value="Windows">Windows</md-option>
+                                        <md-option value="Linux">Linux</md-option>
+                                        <md-option value="OSX">OSX</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">browser</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="chrome" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.browserChrome" md-theme="default" aria-label="select">
+                                        <md-option value="Chrome">Chrome</md-option>
+                                        <md-option value="Firefox">Firefox</md-option>
+                                        <md-option value="Edge">Edge</md-option>
+                                        <md-option value="IE">IE</md-option>
+                                        <md-option value="Opera">Opera</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="default">
+                            <div layout="row" layout-align="start center" style="width:100%;">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Lorem</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                            <div layout="row" layout-align="start center" style="width:100%;">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Ipsum</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                            <div layout="row" layout-align="start center" style="width:100%">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Dolor</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                        </md-card>
+                    </div>
+                    <div layout="row" class="test-row-wrap-scroll" ng-if="isCloned">
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span class="f-card-text" flex>Section</span>
+                                <md-menu class="menu-section" md-theme="default">
+                                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                        <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                    </md-button>
+                                    <md-menu-content width="3" layout-padding>
+                                        <md-menu-item>
+                                            <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                                <div layout="row">
+                                                    <p flex>Clone</p>
+                                                    <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                                </div>
+                                            </md-button>
+                                        </md-menu-item>
+                                        <md-menu-item>
+                                            <md-button>
+                                                <div layout="row">
+                                                    <p flex>Delete</p>
+                                                    <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                                </div>
+                                            </md-button>
+                                        </md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+                            </div>
+                            <md-input-container style="padding: 0; margin-right: 20px;">
+                                <md-select ng-model="user.section" md-theme="default" aria-label="select">
+                                    <md-option value="123456">123456</md-option>
+                                    <md-option value="1234">1234</md-option>
+                                    <md-option value="12345">12345</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                            <span class="f-card-text">size 800x600</span>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">country</span>
+                            </div>
+                            <md-input-container>
+                                <md-select ng-model="user.city" md-theme="default" aria-label="select">
+                                    <md-option value="Argentina">Argentina</md-option>
+                                    <md-option value="Mexico">Mexico</md-option>
+                                    <md-option value="Spain">Spain</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">device</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.devicePc" md-theme="default" aria-label="select">
+                                        <md-option value="PC">PC</md-option>
+                                        <md-option value="Mobile">Mobile</md-option>
+                                        <md-option value="Tablet">Tablet</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">os</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select">
+                                        <md-option value="Windows">Windows</md-option>
+                                        <md-option value="Linux">Linux</md-option>
+                                        <md-option value="OSX">OSX</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card md-primary" layout="column" layout-padding md-theme="default">
+                            <div layout="row">
+                                <span flex class="f-card-text">browser</span>
+                            </div>
+                            <div layout="row" style="height: 39px;">
+                                <ng-md-icon icon="chrome" style="fill:transparent; margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                                <md-input-container flex>
+                                    <md-select ng-model="user.browserNone" md-theme="default" aria-label="select">
+                                        <md-option value="Chrome">Chrome</md-option>
+                                        <md-option value="Firefox">Firefox</md-option>
+                                        <md-option value="Edge">Edge</md-option>
+                                        <md-option value="IE">IE</md-option>
+                                        <md-option value="Opera">Opera</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-card>
+                        <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="default">
+                            <div layout="row" layout-align="start center" style="width:100%;">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Lorem</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                            <div layout="row" layout-align="start center" style="width:100%;">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Ipsum</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                            <div layout="row" layout-align="start center" style="width:100%">
+                                <span flex class="f-card-text md-button" ng-click="newModal($event)">1001- Dolor</span>
+                                <input class="f-input" type="text" name="name" value="" placeholder="%">
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+                <div layout="row">
+                    <span flex></span>
+                    <md-button md-no-ink class="md-primary">save</md-button>
+                </div>
+            </div>
+<!-- TEMA AZUL ACTIVA -->
+            <md-divider></md-divider>
+            <div class="test-wrap active-blue">
+                <span flex class="md-headline">{{textos.home.blueActive}}</span>
+                <!-- <div layout="row">
+                    <span flex class="md-headline">Azul - Test activo</span>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="pause" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" disabled>
+                        <ng-md-icon icon="timer" style="fill:rgba(0, 0, 0, 0.12)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="stop" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                </div> -->
+                <div layout="row">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span class="f-card-text" flex ng-click="duplicateOs = !duplicateOs;">Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Pause</p>
+                                                <ng-md-icon icon="pause" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="chrome" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserChrome" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="fTheme-1">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+                <div layout="row" style="margin-bottom:1em;">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span class="f-card-text" flex>Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Pause</p>
+                                                <ng-md-icon icon="pause" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="fTheme-1">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="firefox" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserFirefox" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="fTheme-1">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+            </div>
+<!-- TEST PAUSADO -->
+            <md-divider></md-divider>
+            <div class="test-wrap active-blue">
+                <span flex class="md-headline">{{textos.home.testPause}}</span>
+                <!-- <div layout="row">
+                    <span flex class="md-headline">Test en pausa</span>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="play_arrow" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" disabled>
+                        <ng-md-icon icon="timer" style="fill:rgba(0, 0, 0, 0.12)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="stop" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                </div> -->
+                <div layout="row">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span class="f-card-text" flex ng-click="duplicateOs = !duplicateOs;">Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Play</p>
+                                                <ng-md-icon icon="play_arrow" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="chrome" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserChrome" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="yellow">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+                <div layout="row" style="margin-bottom:1em;">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span class="f-card-text" flex>Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Play</p>
+                                                <ng-md-icon icon="play_arrow" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="duplicateOs = !duplicateOs; cloneOk();">
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="yellow">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="firefox" style="fill:rgba(0, 0, 0, 0.54); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserFirefox" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="yellow">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+            </div>
+
+<!-- TEST FINALIZADO -->
+            <md-divider></md-divider>
+            <div class="test-wrap dark">
+                <span flex class="md-headline">{{textos.home.testFinished}}</span>
+                <!-- <div layout="row">
+                    <span flex class="md-headline"> - Test terminado</span>
+                    <md-button class="md-icon-button" disabled>
+                        <ng-md-icon icon="pause" style="fill:rgba(0, 0, 0, 0.12)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" disabled>
+                        <ng-md-icon icon="timer" style="fill:rgba(0, 0, 0, 0.12)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" disabled>
+                        <ng-md-icon icon="stop" style="fill:rgba(0, 0, 0, 0.12)" size="20"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button">
+                        <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                    </md-button>
+                </div> -->
+                <div layout="row">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span class="f-card-text" flex>Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:rgba(255, 255, 255, 0.30);" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Restart</p>
+                                                <ng-md-icon icon="loop" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="chrome" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserChrome" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="docs-dark">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+                <div layout="row" style="margin-bottom:1em;">
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span class="f-card-text" flex>Section</span>
+                            <md-menu class="menu-section" md-theme="default">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:rgba(255, 255, 255, 0.30);" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Clone</p>
+                                                <ng-md-icon icon="content_copy" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Restart</p>
+                                                <ng-md-icon icon="loop" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button>
+                                            <div layout="row">
+                                                <p flex>Delete</p>
+                                                <ng-md-icon icon="delete" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon>
+                                            </div>
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+
+                        <md-input-container style="padding: 0; margin-right: 20px;">
+                            <md-select ng-model="user.section" md-theme="default" aria-label="select" disabled>
+                                <md-option value="123456">123456</md-option>
+                                <md-option value="1234">1234</md-option>
+                                <md-option value="12345">12345</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span class="f-card-text" style="margin-top: 5px;">channel download</span>
+                        <span class="f-card-text">size 800x600</span>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">country</span>
+                        </div>
+                        <md-input-container>
+                            <md-select ng-model="user.city" md-theme="default" aria-label="select" disabled>
+                                <md-option value="Argentina">Argentina</md-option>
+                                <md-option value="Mexico">Mexico</md-option>
+                                <md-option value="Spain">Spain</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">device</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="computer" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.devicePc" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="PC">PC</md-option>
+                                    <md-option value="Mobile">Mobile</md-option>
+                                    <md-option value="Tablet">Tablet</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">os</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="windows" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.deviceWin" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Windows">Windows</md-option>
+                                    <md-option value="Linux">Linux</md-option>
+                                    <md-option value="OSX">OSX</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card md-primary" layout="column" layout-padding md-theme="docs-dark">
+                        <div layout="row">
+                            <span flex class="f-card-text">browser</span>
+                        </div>
+                        <div layout="row" style="height: 39px;">
+                            <ng-md-icon icon="firefox" style="fill:rgba(255, 255, 255, 0.30); margin: auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            <md-input-container flex>
+                                <md-select ng-model="user.browserFirefox" md-theme="default" aria-label="select" disabled>
+                                    <md-option value="Chrome">Chrome</md-option>
+                                    <md-option value="Firefox">Firefox</md-option>
+                                    <md-option value="Edge">Edge</md-option>
+                                    <md-option value="IE">IE</md-option>
+                                    <md-option value="Opera">Opera</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </md-card>
+                    <md-card class="f-card" layout="column" layout-align="space-around start" layout-padding md-theme="docs-dark">
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Lorem</span>
+                            <input class="f-input" type="text" name="name" value="60" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%;">
+                            <span flex class="f-card-text md-button" disabled>1001- Ipsum</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                        <div layout="row" layout-align="start center" style="width:100%">
+                            <span flex class="f-card-text md-button" disabled>1001- Dolor</span>
+                            <input class="f-input" type="text" name="name" value="20" disabled>
+                        </div>
+                    </md-card>
+                </div>
+            </div> <!-- FIN TEMA TEST FINALIZADO -->
+            <span flex class="md-headline">{{textos.home.searchResults}}</span>
+            <div>
+                <md-card style="margin:2em 0;">
+                    <table class="dual-table">
+                    	<tr class="dual-table-header text-secondary">
+                    		<td>ID Test</td>
+                    		<td>Manager</td>
+                            <td>Start Day</td>
+                            <td>Website</td>
+                            <td>Section</td>
+                            <td>Size</td>
+                            <td>Channel</td>
+                            <td>Country</td>
+                            <td>Device</td>
+                            <td>Carrier</td>
+                            <td>OS</td>
+                            <td>Browser</td>
+                            <td>Advertiser</td>
+                            <td>L.I</td>
+                            <td>Creativity</td>
+                    	</tr>
+                    	<tr ng-click="showSubtable = !showSubtable;">
+                            <td>142536</td>
+                    		<td>The Manager</td>
+                            <td>09/02/15</td>
+                            <td>www.potrillo.com.ar</td>
+                            <td>ABC</td>
+                            <td>800x600</td>
+                            <td>Downloads</td>
+                            <td>Argentina</td>
+                            <td>PC</td>
+                            <td>N/A</td>
+                            <td>Windows</td>
+                            <td>Chrome</td>
+                            <td>Troll</td>
+                            <td>123</td>
+                            <td>535353</td>
+                    	</tr>
+                    </table>
+                    <md-content style="width:100%;" ng-show="showSubtable" md-theme="notif-color-1">
+                        <table class="sub-table" cellpadding="0" cellspacing="0">
+                        	<tr>
+                                <td>Advertiser</td>
+                                <td>L.I</td>
+                                <td>% Assigned</td>
+                                <td>Creativity</td>
+                                <td>% Creativity</td>
+                                <td>Impressions</td>
+                                <td>Impressions</td>
+                                <td>Revenue</td>
+                                <td>eCPM Before</td>
+                                <td>eCPM After</td>
+                        	</tr>
+                        	<tr>
+                                <td>Troll</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td></td>
+                                <td></td>
+                                <td>12,5</td>
+                                <td>13</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                        </table>
+                    </md-content>
+                    <table class="dual-table">
+                    	<tr ng-click="showSubtable1 = !showSubtable1;">
+                            <td style="width:67px;">142536</td>
+                    		<td style="width:105px;">The Manager</td>
+                            <td style="width:79px;">09/02/15</td>
+                            <td style="width:152px;">www.potrillo.com.ar</td>
+                            <td style="width:67px;">ABC</td>
+                            <td style="width:75px;">800x600</td>
+                            <td style="width:91px;">Downloads</td>
+                            <td style="width:82px;">Argentina</td>
+                            <td style="width:61px;">PC</td>
+                            <td style="width:62px;">N/A</td>
+                            <td style="width:77px;">Windows</td>
+                            <td style="width:72px;">Chrome</td>
+                            <td style="width:86px;">Troll</td>
+                            <td style="width:42px;">123</td>
+                            <td style="width:82px;">535353</td>
+                    	</tr>
+                    </table>
+                    <md-content style="width:100%;" ng-show="showSubtable1" md-theme="notif-color-1">
+                        <table class="sub-table" cellpadding="0" cellspacing="0">
+                        	<tr>
+                                <td>Advertiser</td>
+                                <td>L.I</td>
+                                <td>% Assigned</td>
+                                <td>Creativity</td>
+                                <td>% Creativity</td>
+                                <td>Impressions</td>
+                                <td>Impressions</td>
+                                <td>Revenue</td>
+                                <td>eCPM Before</td>
+                                <td>eCPM After</td>
+                        	</tr>
+                        	<tr>
+                                <td>Troll</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td></td>
+                                <td></td>
+                                <td>12,5</td>
+                                <td>13</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                            <tr>
+                                <td>Jet</td>
+                                <td>123 (10$)</td>
+                                <td>20</td>
+                                <td>53525160</td>
+                                <td>100%</td>
+                                <td>20000</td>
+                                <td>40000</td>
+                                <td>25%</td>
+                                <td>14</td>
+                                <td>N/A</td>
+                        	</tr>
+                        </table>
+                    </md-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

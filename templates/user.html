@@ -1,0 +1,84 @@
+<md-dialog aria-label="Mango (Fruit)" class="modal-settings">
+    <md-toolbar md-theme="{{tema}}">
+        <div>
+            <span class="md-flex settings-title">{{textos.user.userOptions}}</span>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding" style="padding: 0px; height:100%;" md-theme="{{tema}}">
+        <md-tabs md-dynamic-height md-stretch-tabs="auto" class="md-primary" md-theme="{{tema}}">
+            <md-tab label="ACCOUNT">
+                <md-content>
+                    <md-list>
+                        <md-item>
+                            <md-item-content layout="row" layout-align="start center" layout-sm="column">
+                                <div class="md-tile-content" style="width:90%; margin-left: 1.5em;">
+                                    <h3 style="font-weight:500;">{{textos.user.language}}</h3>
+                                    <h4 class="text-secondary" style="font-weight: 400;">{{textos.user.chooseLanguage}}</h4>
+                                </div>
+                                <md-select placeholder="Pick" ng-model="opts.lang" class="settings-select">
+                                    <md-option value="spa"><img src="img/spain-flag.png" alt="spanish flag" width="25"> Español</md-option>
+                                    <md-option value="eng" ng-selected="selected"><img src="img/uk-flag.png" alt="uk flag" width="25"> English</md-option>
+                                </md-select>
+                            </md-item-content>
+                            <md-divider></md-divider>
+                        </md-item>
+                        <md-item>
+                            <md-item-content layout="column" layout-align="start center" layout-sm="column">
+                                <div layout-fill layout="column" layout-gt-md="row" style="padding: 0 1.5em;">
+                                    <md-input-container flex style="width:100%;">
+                                        <label>{{textos.mydata.fullName}}</label>
+                                        <input ng-model="userFullName" type="text" ng-disabled="true">
+                                    </md-input-container>
+                                    <md-input-container flex style="width:100%;">
+                                        <label>Email</label>
+                                        <input ng-model="userData.userEmail" type="text" ng-disabled="true">
+                                    </md-input-container>
+                                </div>
+                                <div layout-fill layout="column" layout-gt-md="row" style="padding: 0 1.5em;">
+                                    <md-input-container flex style="width:100%;">
+                                        <label>Skype</label>
+                                        <input ng-model="userData.contactIMContact" type="text">
+                                    </md-input-container>
+                                    <md-input-container flex style="width:100%;">
+                                        <label>{{textos.mydata.phone}}</label>
+                                        <input ng-model="userData.userPhone" type="text">
+                                    </md-input-container>
+                                </div>
+                            </md-item-content>
+                        </md-item>
+                        <md-item>
+                            <md-item-content layout="column" layout-align="start center" layout-sm="column">
+                                <md-input-container flex style="width:100%;">
+                                    <label>Validate your password</label>
+                                    <input ng-model="oldPassword" type="text">
+                                </md-input-container>
+                            </md-item-content>
+                        </md-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+            <md-tab label="SECURITY">
+                <div class="settings-pass">
+                    <span class="account-title text-secondary" style="width:100%; margin-top:1em; margin-bottom:1em; line-height:1.1em;">{{textos.user.tips}}</span>
+                    <md-input-container class="settings-pass-input">
+                        <label>{{textos.user.currentPass}}</label>
+                        <input ng-model="pass.cp" type="password">
+                    </md-input-container>
+                    <md-input-container class="settings-pass-input">
+                        <label>{{textos.user.newPass}}</label>
+                        <input ng-model="pass.np" type="password">
+                    </md-input-container>
+                    <md-input-container class="settings-pass-input">
+                        <label>{{textos.user.repeatPass}}</label>
+                        <input ng-model="pass.rp" type="password">
+                    </md-input-container>
+                    <md-button style="margin-left: 45%;" md-theme="{{tema}}" class="md-raised md-primary" ng-click="changePass()" ng-disabled="button">{{textos.user.change}}</md-button>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+    <div class="md-actions" layout="row">
+        <md-button class="md-raised" md-theme="{{tema}}" style="float:right; margin:1em; color: #757575;" ng-click="exit()">{{textos.user.close}}</md-button>
+        <md-button ng-click="guardarCambios()" md-theme="{{tema}}" style="margin:1em 0 1em 0; float:right;" class="md-raised md-primary">{{textos.user.save}}</md-button>
+    </div>
+</md-dialog>

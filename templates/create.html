@@ -1,0 +1,1118 @@
+<div style="overflow-y: auto; height: 100%;">
+<!-- <div layout="column" layout-align="start center"> -->
+  <md-content style="width:95%; overflow-y:hidden; background:transparent; box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);   margin: 0 auto; margin-top:25px;">
+      <div layout="row" ng-click="view[0]=!view[0]" style="background-color:#4B4B4B; height:60px; border-radius:3px; color:#ffffff; cursor:pointer;">
+        <div flex layout="row" layout-align="start center">
+          <ng-md-icon icon="add_circle" style="fill:white; margin-left:20px; margin-right:20px; margin-top:5px;" class="icon-expand" size="24" options='{"duration": 450}'></ng-md-icon>My Campaign one<md-switch aria-label="Switch 1"></md-switch>
+        </div>
+        <div layout="row">
+          <md-button style="padding:0.7em; margin-right:20px;"><ng-md-icon icon="language" style="fill:white; position:relative; top:5px; right:5px;" class="icon-expand" size="24" options='{"duration": 450}'></ng-md-icon>  add country</md-button>  
+        </div>
+      </div>
+        <md-content ng-show="view[0]" style="border-bottom-right-radius:3px; border-bottom-left-radius:3px;">
+          <section style="background-color:#4B4B4B;">
+                       <div class="md-list-item" layout="column" layout-align="start center">
+                         <div class="my-card">
+                           <div layout="row" layout-align="start start" class="sidebar-left">
+                             <div style="height:55px; margin-top:11px; text-align:center; font-size:14px;" >
+                               <img src="img/argentina-1.png" style="width:80px;">
+                               <span>ARGENTINA</span>
+                             </div>
+                             <div style="font-size:12px; min-width:48px; height:73px;">
+                              <md-button ng-click="myMenu = !myMenu" style="background-color:#FBFBFB; width:25px; margin-top:20px; margin-left:10px; height:28px; color:#000; text-align:center; min-width: 25px;">+</md-button>
+                              <div class="my-menu md-whiteframe-z2" style="margin-left:-46px; margin-top:12px;" ng-show="myMenu">
+                                <div class="my-menu-items">
+                                    <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">PC</md-checkbox></span>
+                                    <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">TABLET WI-FI</md-checkbox></span>
+                                    <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">TABLET 3G</md-checkbox></span>
+                                    <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 4" style="margin:0px; padding:10px;">MOBILE WI-FI</md-checkbox></span>
+                                    <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 5" style="margin:0px; padding:10px;">MOBILE 3G</md-checkbox></span>
+                                  </div>
+                              </div>
+                             </div>  
+                           </div>
+                           <div class="line-t-d-principal" style="min-width:50px;"></div>
+                           <div class="tree">
+                            <div class="tree-item" style="font-size:12px;">
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-pc"><img src="img/pc-icon.png" style="width:32px; padding:0 5px 0 5px;"> PC</span>
+                                    <md-button ng-click="myMenu1 = !myMenu1" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+
+                                    </md-button>
+                                    <div class="my-menu md-whiteframe-z2" style="margin-left:-68px; margin-top:64px;" ng-show="myMenu1">
+                                      <div class="my-menu-items">
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Windows</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">OS X</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Linux</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Others</md-checkbox></span>
+                                          <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 4" style="margin:0px; padding:10px;">Default</md-checkbox></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line-t-d"></div>
+
+                                <div layout="row" layout-align="center center" class="box">
+                               		<img src="img/devices/pc-linux.png" width="22" alt="">
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+                            
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/pc-windows.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/pc-apple.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="30">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                   		<input class="percent" type="number" name="FirstName" value="30">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                     <div style="display: flex; flex-direction:row; font-size:14px; ">
+                                    		<input class="percent" type="number" name="FirstName" value="40">
+                                    		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                    		<span class="remove-item">-</span>
+                                     </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+							             <div class="tree-item" style="font-size:12px;">
+                            <div class="line-t-r margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-tablet-w"><img src="img/tablet-wifi-icon.png" style="width:32px; padding:0 5px 0 5px;"> TABLET WI-FI</span>
+                                    <md-button ng-click="myMenu2 = !myMenu2" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+</md-button>
+                                    <div class="my-menu md-whiteframe-z2" style="margin-left:-87px; margin-top:64px;" ng-show="myMenu2">
+                                      <div class="my-menu-items">
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Android</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">iOS</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Windows Phone</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Others</md-checkbox></span>
+                                          <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 4" style="margin:0px; padding:10px;">Default</md-checkbox></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" style="width:80px;" class="box">
+                                  <img src="img/devices/tab-wifi-and.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px; ">+</md-button>
+                                </div>
+                               
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-app.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-oth.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-win.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item" style="font-size:12px;">
+                              <div class="line-t-r margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-tablet-3"><img src="img/tablet-3g-icon.png" style="width:32px; padding:0 5px 0 5px;"> TABLET 3G</span>
+                                    <md-button ng-click="myMenu3 = !myMenu3" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+</md-button>
+                                    <div class="my-menu md-whiteframe-z2" style="margin-left:-87px; margin-top:64px;" ng-show="myMenu3">
+                                      <div class="my-menu-items">
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Android</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">iOS</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Windows Phone</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Others</md-checkbox></span>
+                                          <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 4" style="margin:0px; padding:10px;">Default</md-checkbox></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-and.png" width="22" alt="">
+                                  <md-button ng-click="myMenu10 = !myMenu10" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+
+                                  </md-button>
+                                  <div class="my-menu md-whiteframe-z2" style="margin-left:-68px; margin-top:64px;" ng-show="myMenu10">
+                                    <div class="my-menu-items">
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Movistar</md-checkbox></span>
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">Personal</md-checkbox></span>
+                                        <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 5" style="margin:0px; padding:10px;">Claro</md-checkbox></span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier"><span>Movistar</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button></div>
+                                <!-- <div layout="row" layout-align="center center" class="add-li"></div> -->
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone-no-device" style="font-size:12px;">
+                              <div class="line-v"></div>
+                              <div class="line-c-subitem"></div>
+								              <div layout="row" layout-align="center center" class="carrier-no-so"><span>Claro</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+</md-button>
+                              </div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                   		<input class="percent" type="number" name="FirstName" value="50">
+                                   		<input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                   		<span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+
+                            <div class="tree-item-clone-device" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-app.png" width="22" alt="">
+                                  <md-button ng-click="myMenu11 = !myMenu11" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+
+                                  </md-button>
+                                  <div class="my-menu md-whiteframe-z2" style="margin-left:-68px; margin-top:64px;" ng-show="myMenu11">
+                                    <div class="my-menu-items">
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Movistar</md-checkbox></span>
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">Personal</md-checkbox></span>
+                                        <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 5" style="margin:0px; padding:10px;">Claro</md-checkbox></span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier"><span>Personal</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button></div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+
+                            <div class="tree-item-clone-device" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-win.png" width="22" alt="">
+                                  <md-button ng-click="myMenu12 = !myMenu12" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+
+                                  </md-button>
+                                  <div class="my-menu md-whiteframe-z2" style="margin-left:-68px; margin-top:64px;" ng-show="myMenu12">
+                                    <div class="my-menu-items">
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Movistar</md-checkbox></span>
+                                        <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">Personal</md-checkbox></span>
+                                        <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 5" style="margin:0px; padding:10px;">Claro</md-checkbox></span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier">
+                                  <span>Claro</span>
+                                  <md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button>
+                                </div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                              <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                              </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="tree-item" style="font-size:12px;">
+                              <div class="line-c margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-mobile-w"><img src="img/mobile-wifi-icon.png" style="width:32px; padding:0 5px 0 5px;"> MOBILE WI-FI</span>
+                                    <md-button ng-click="myMenu4 = !myMenu4" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+</md-button>
+                                    <div class="my-menu md-whiteframe-z2" style="margin-left:-87px; margin-top:64px;" ng-show="myMenu4">
+                                      <div class="my-menu-items">
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 1" style="margin:0px; padding:10px;">Android</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 2" style="margin:0px; padding:10px;">iOS</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Windows Phone</md-checkbox></span>
+                                          <span class="my-menu-items-hover"><md-checkbox aria-label="Checkbox 3" style="margin:0px; padding:10px;">Others</md-checkbox></span>
+                                          <span class="my-menu-items-hover" style="border-bottom:none;"><md-checkbox aria-label="Checkbox 4" style="margin:0px; padding:10px;">Default</md-checkbox></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-and.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-app.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-oth.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-win.png" width="22" alt="">
+                                  <!-- <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px;">+</md-button> -->
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>             
+              </div>
+            </div>
+          </section>
+    </md-content>      
+
+    
+
+
+
+
+
+
+
+  </md-content>
+
+  <!-- <md-content style="width:95%; overflow-y:hidden; background:transparent; box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); margin-top:25px;">
+      <div layout="row" ng-click="view[1]=!view[1]" style="background-color:#4B4B4B; height:60px; border-radius:3px; color:#ffffff; cursor:pointer;">
+        <div flex layout="row" layout-align="start center">
+          <ng-md-icon icon="add_circle" style="fill:white; margin-left:20px; margin-right:20px; margin-top:5px;" class="icon-expand" size="24" options='{"duration": 450}'></ng-md-icon>My Campaign two
+        </div>
+        <div layout="row">
+          <md-button style="padding:0.7em; margin-right:20px;"><ng-md-icon icon="language" style="fill:white; position:relative; top:5px; right:5px;" class="icon-expand" size="24" options='{"duration": 450}'></ng-md-icon>  add country</md-button>  
+        </div>
+        
+      </div>
+        <md-content ng-show="view[1]" style="border-bottom-right-radius:3px; border-bottom-left-radius:3px;">
+          <section style="background-color:#4B4B4B;">
+                       <div class="md-list-item" layout="column" layout-align="start center">
+                         <div class="my-card">
+                           <div layout="row" layout-align="start start" class="sidebar-left">
+                             <div style="height:55px; margin-top:11px; text-align:center; font-size:14px;" >
+                               <img src="img/argentina-1.png" style="width:80px;">
+                               <span>ARGENTINA</span>
+                             </div>
+                             <div style="font-size:12px; min-width:48px; height:73px;">
+                              <md-button style="background-color:#FBFBFB; width:25px; margin-top:20px; margin-left:10px; height:28px; color:#000; text-align:center;">+
+                                     <md-tooltip md-direction="down">
+                                       <md-checkbox aria-label="Checkbox 1">
+                                           PC
+                                         </md-checkbox>
+                                         <md-checkbox aria-label="Checkbox 2">
+                                           TABLET WI-FI
+                                         </md-checkbox>
+                                         <md-checkbox aria-label="Checkbox 3">
+                                           TABLET 3G
+                                         </md-checkbox>    
+                                         <md-checkbox aria-label="Checkbox 4">
+                                           MOBILE WI-FI
+                                         </md-checkbox>
+                                         <md-checkbox aria-label="Checkbox 5">
+                                           MOBILE 3G
+                                       </md-checkbox>
+                                     </md-tooltip>
+                              </md-button>
+                             </div>  
+                           </div>
+                           
+                           <div class="line-t-d-principal" style="min-width:50px;"></div>
+                           <div class="tree">
+                            <div class="tree-item" style="font-size:12px;">
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-pc"><img src="img/pc-icon.png" style="width:32px; padding:0 5px 0 5px;"> PC</span>
+                                    <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center;">+
+                                        <md-tooltip md-direction="down">
+                                          <md-checkbox aria-label="Checkbox 1">
+                                               Windows
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 2">
+                                               OS X
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 3">
+                                               Linux
+                                             </md-checkbox>    
+                                             <md-checkbox aria-label="Checkbox 4">
+                                               Others
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 5">
+                                               Default
+                                          </md-checkbox>
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+                                <div class="line-t-d"></div>
+
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/pc-linux.png" width="22" alt="">
+                                  
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; ">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+                            
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/pc-windows.png" width="22" alt="">
+                                  
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/pc-apple.png" width="22" alt="">
+                                  
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="30">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                      <input class="percent" type="number" name="FirstName" value="30">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                     <div style="display: flex; flex-direction:row; font-size:14px; ">
+                                        <input class="percent" type="number" name="FirstName" value="40">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                     </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+                           <div class="tree-item" style="font-size:12px;">
+                            <div class="line-t-r margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-tablet-w"><img src="img/tablet-wifi-icon.png" style="width:32px; padding:0 5px 0 5px;"> TABLET WI-FI</span>
+                                    <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+
+                                        <md-tooltip md-direction="down">
+                                          <md-checkbox aria-label="Checkbox 1">
+                                               Android
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 2">
+                                               iOS
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 3">
+                                               Windows Phone
+                                             </md-checkbox>    
+                                             <md-checkbox aria-label="Checkbox 4">
+                                               Others
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 5">
+                                               Default
+                                          </md-checkbox>
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" style="width:80px;" class="box">
+                                  <img src="img/devices/tab-wifi-and.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                               
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-app.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-oth.png" width="22" alt="">
+                                  
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-wifi-win.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item" style="font-size:12px;">
+                              <div class="line-t-r margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-tablet-3"><img src="img/tablet-3g-icon.png" style="width:32px; padding:0 5px 0 5px;"> TABLET 3G</span>
+                                    <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+
+                                        <md-tooltip md-direction="down">
+                                          <md-checkbox aria-label="Checkbox 1">
+                                               Android
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 2">
+                                               iOS
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 3">
+                                               Windows Phone
+                                             </md-checkbox>    
+                                             <md-checkbox aria-label="Checkbox 4">
+                                               Others
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 5">
+                                               Default
+                                          </md-checkbox>
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-and.png" width="22" alt="">
+                                  <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px; min-width: 25px;">+
+                                    <md-tooltip md-direction="down">
+                                        <md-checkbox aria-label="Checkbox 1">
+                                          Movistar
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 2">
+                                          Personal
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 3">
+                                          Claro
+                                        </md-checkbox>    
+                                    </md-tooltip>
+                                  </md-button>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier"><span>Movistar</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button></div>
+                               
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone-no-device" style="font-size:12px;">
+                              <div class="line-v"></div>
+                              <div class="line-c-subitem"></div>
+                              <div layout="row" layout-align="center center" class="carrier-no-so"><span>Claro</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+</md-button>
+                              </div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+
+                            <div class="tree-item-clone-device" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-app.png" width="22" alt="">
+                                  <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+
+                                    <md-tooltip md-direction="down">
+                                        <md-checkbox aria-label="Checkbox 1">
+                                          Movistar
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 2">
+                                          Personal
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 3">
+                                          Claro
+                                        </md-checkbox>    
+                                    </md-tooltip>
+                                  </md-button>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier"><span>Personal</span><md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button></div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+
+                            <div class="tree-item-clone-device" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/tab-3g-win.png" width="22" alt="">
+                                  <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:10px; min-width: 25px;">+
+                                    <md-tooltip md-direction="down">
+                                        <md-checkbox aria-label="Checkbox 1">
+                                          Movistar
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 2">
+                                          Personal
+                                        </md-checkbox>
+                                        <md-checkbox aria-label="Checkbox 3">
+                                          Claro
+                                        </md-checkbox>    
+                                    </md-tooltip>
+                                  </md-button>
+                                </div>
+                                <div layout="row" layout-align="center center" class="carrier">
+                                  <span>Claro</span>
+                                  <md-button ng-click="newItem($event)" style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; margin-left:7px; min-width: 25px;">+</md-button>
+                                </div>
+
+                              <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                              </div>
+                              <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                              </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="tree-item" style="font-size:12px;">
+                              <div class="line-c margin-negative"></div>
+                                <div layout="row" layout-align="center center" class="card-device"> 
+                                    <span class="device-mobile-w"><img src="img/mobile-wifi-icon.png" style="width:32px; padding:0 5px 0 5px;"> MOBILE WI-FI</span>
+                                    <md-button style="background-color:#FBFBFB; width:25px; height:28px; color:#000; text-align:center; min-width: 25px;">+
+                                        <md-tooltip md-direction="down">
+                                          <md-checkbox aria-label="Checkbox 1">
+                                               Android
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 2">
+                                               iOS
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 3">
+                                               Windows Phone
+                                             </md-checkbox>    
+                                             <md-checkbox aria-label="Checkbox 4">
+                                               Others
+                                             </md-checkbox>
+                                             <md-checkbox aria-label="Checkbox 5">
+                                               Default
+                                          </md-checkbox>
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+                                <div class="line-t-d"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-and.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-app.png" width="22" alt="">
+                                  
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-t-r"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-oth.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>
+
+                            <div class="tree-item-clone" style="font-size:12px;">
+                                <div class="line-c"></div>
+                                <div layout="row" layout-align="center center" class="box">
+                                  <img src="img/devices/mob-wifi-win.png" width="22" alt="">
+                                 
+                                </div>
+                                <div layout="row" layout-align="center center" class="default">Default
+                                  <md-button  ng-click="newItem($event)" style="width:25px; height:28px; color:#000; background-color:#FBFBFB; text-align:center; margin-left:20px; min-width: 25px;">+</md-button>
+                                </div>
+                                <div class="tree-item-li">
+                                    <div style="display: flex; flex-direction:row; font-size:14px; border-bottom:1px solid #B3B3B3;">
+                                        <input class="percent" type="number" placeholder="%" name="FirstName" value="50">
+                                        <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                        <span class="remove-item">-</span>
+                                    </div> 
+                                    <div style="display: flex; flex-direction:row; font-size:14px;">
+                                      <input class="percent" type="number" name="FirstName" value="50">
+                                      <input class="name" type="text" name="FirstName" value="LINE ITEM 123456">
+                                      <span class="remove-item">-</span>
+                                    </div>      
+                                </div>
+                                <div style="margin:0 auto;">
+                                  <span style="line-height:35px; color:#808080; margin:0 10px 0 10px;">REMAIN <b style="color:#4D4D4D;">0%</b> of 100%</span>  
+                                </div>
+                            </div>             
+              </div>
+            </div>
+          </section>
+    </md-content> -->   
+
+</div>

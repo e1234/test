@@ -1,0 +1,190 @@
+<div ng-controller="websitesPublisherCtrl" style="height:100%;">
+    <div class="lock-size" layout="row" layout-align="center center" style="position:fixed; top:78px; right:25px; z-index:9;">
+        <md-fab-speed-dial md-open="true" md-direction="down" class="md-fling">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab">
+                    <md-tooltip md-direction="top">Menu</md-tooltip>
+                    <ng-md-icon icon="menu" style="fill:black" size="24"></ng-md-icon>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini" style="background-color:#FFF59D;">
+                    <ng-md-icon icon="access_time" class="pending-icon" size="20">
+                        <md-tooltip md-direction="left">Pending</md-tooltip>
+                    </ng-md-icon>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <!-- style="background-color:#66BB6A; -->
+                    <ng-md-icon icon="done" class="approved-icon" size="20">
+                        <md-tooltip>Approved</md-tooltip>
+                    </ng-md-icon>
+                </md-button>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <ng-md-icon icon="not_interested" class="denied-icon" size="20">
+                        <md-tooltip>Denied</md-tooltip>
+                    </ng-md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </div>
+    <!-- <div style="height:50px;"></div> -->
+    <!-- <div style="width:200%;"> -->
+        <!-- <div class="demo" ng-class="{'test': slide}"> -->
+            <div class="the-wrapper height-100" layout="column">
+                <!-- <div style="width:100%; height:100%; background-color:coral;" layout="row" divheight="alto">
+                    <div style="width:10px; max-width:10px; height:100%;" layout="column" ng-style="{'height': alto+'px'}">
+                        <div style="width:100%; height:100%; background-color:white;"></div>
+                        <img src="img/message-tail.png" alt="" />
+                        <div style="width:100%; height:100%; background-color:white;"></div>
+                    </div>
+                    <div class="md-caption" style="padding: 0.5em;">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    </div>
+                </div> -->
+                <md-card layout="column" class="demo-square website-pending height-100" ng-repeat="item in [1, 2, 3, 4, 5, 6]">
+                    <div class="pending-website-header" layout="row" layout-align="start center">
+                        <span class="md-caption">09/02/2015</span>
+                        <md-button flex ng-click="openUser($event)" class="user-mail-button">user@mail.com</md-button>
+                        <md-button class="md-icon-button website-actions" aria-label="Settings">
+                            <ng-md-icon icon="not_interested" class="denied-site-icon" size="18"></ng-md-icon>
+                            <md-tooltip>Mark as Denied</md-tooltip>
+                        </md-button>
+                        <md-button class="md-icon-button website-actions" aria-label="Settings">
+                            <ng-md-icon icon="done" class="approved-site-icon" size="18"></ng-md-icon>
+                            <md-tooltip>Mark as Approved</md-tooltip>
+                        </md-button>
+                    </div>
+                    <md-divider></md-divider>
+                    <div layout="row" layout-padding style="height:46px;" layout-align="start center">
+                        <span flex class="md-subhead" style="padding-left:0;">www.newurlfrompublisher.com</span>
+                        <md-button aria-label="Open demo menu" class="md-icon-button show-web-button" ng-click="showSite = !showSite;" ng-class="{ active: showSite }">
+                            <ng-md-icon icon="keyboard_arrow_down" style="fill:black" size="16"></ng-md-icon>
+                        </md-button>
+                        <input aria-label="input" type="number" name="name" value="" class="rs-input">
+                    </div>
+                    <div layout="column" ng-show="showSite" layout-padding style="padding-top:0;">
+                        <div layout="column">
+                            <div layout="row" layout-align="start center" class="user-message">
+                                <input flex type="text" name="name" value="" placeholder="deja una nota" class="input-message md-caption">
+                                <md-button class="md-icon-button send-icon" aria-label="send">
+                                    <ng-md-icon icon="send" style="fill:rgba(0, 0, 0, 0.54)" size="16"></ng-md-icon>
+                                </md-button>
+                            </div>
+                            <!-- <div layout="row" class="user-message">
+                                <div style="width:100%; height:100%; background-color:coral;" layout="row" divheight="alto">
+                                    <div style="width:10px; max-width:10px; height:100%;" layout="column" ng-style="{'height': alto+'px'}">
+                                        <div style="width:100%; height:100%; background-color:white;"></div>
+                                        <img src="img/message-tail.png" alt="" />
+                                        <div style="width:100%; height:100%; background-color:white;"></div>
+                                    </div>
+                                    <div class="md-caption" style="padding: 0.5em;">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                                    </div>
+                                </div>
+                                <md-button class="md-icon-button" aria-label="send">
+                                    <ng-md-icon icon="send" style="fill:rgba(0, 0, 0, 0.54)" size="16"></ng-md-icon>
+                                </md-button>
+                            </div> -->
+                            <div class="messages-container height-100">
+                                <div layout="column" class="user-message height-100">
+                                    <div class="message-wrap height-100" layout="row">
+                                        <div style="width:100%;" layout="row" class="height-100">
+                                            <div style="width:10px; max-width:10px; height:100%;" layout="column">
+                                                <div style="width:100%; height:100%; background-color:white;"></div>
+                                                <img src="img/message-tail.png" alt="" />
+                                                <div style="width:100%; height:100%; background-color:white;"></div>
+                                            </div>
+                                            <div class="md-caption" style="padding: 0.5em;">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                                            </div>
+                                        </div>
+                                        <md-button class="md-icon-button" aria-label="send">
+                                            <ng-md-icon icon="remove_circle_outline" style="fill:rgba(0, 0, 0, 0.54)" size="16"></ng-md-icon>
+                                        </md-button>
+                                    </div>
+                                    <div class="message-wrap" layout="row">
+                                        <div style="width:100%;" layout="row">
+                                            <div style="width:10px; max-width:10px; height:100%;" layout="column">
+                                                <div style="width:100%; height:100%; background-color:white;"></div>
+                                                <img src="img/message-tail.png" alt="" />
+                                                <div style="width:100%; height:100%; background-color:white;"></div>
+                                            </div>
+                                            <div class="md-caption" style="padding: 0.5em;">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                                            </div>
+                                        </div>
+                                        <md-button class="md-icon-button" aria-label="send">
+                                            <ng-md-icon icon="remove_circle_outline" style="fill:rgba(0, 0, 0, 0.54)" size="16"></ng-md-icon>
+                                        </md-button>
+                                    </div>
+                                </div>
+                                <!-- <div layout="row" class="message-wrap">
+                                    <div layout="column" layout-align="end center" class="message-border">
+                                        <div flex style="background-color:white; height:100%; width:100%;"></div>
+                                        <img src="img/message-tail.png" alt="" />
+                                        <div flex style="background-color:white; height:15px; width:100%;"></div>
+                                    </div>
+                                    <div flex class="message md-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</div>
+                                </div>
+                                <div layout="row" class="message-wrap">
+                                    <div layout="column" layout-align="end center" class="message-border">
+                                        <div flex style="background-color:white; height:100%; width:100%;"></div>
+                                        <img src="img/message-tail.png" alt="" />
+                                        <div flex style="background-color:white; height:15px; width:100%;"></div>
+
+                                    </div>
+                                    <div flex class="message md-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</div>
+                                </div>
+                                <div layout="row" class="message-wrap">
+                                    <div layout="column" layout-align="end center" class="message-border">
+                                        <div flex style="background-color:white; height:100%; width:100%;"></div>
+                                        <img src="img/message-tail.png" alt="" />
+                                        <div flex style="background-color:white; height:15px; width:100%;"></div>
+
+                                    </div>
+                                    <div flex class="message md-caption">Lorem ipsum dolor sit amet</div>
+                                </div> -->
+
+                            </div>
+
+                        </div>
+                        <div layout="row" ng-repeat="item in [1, 2, 3]" layout-align="start end">
+                            <span class="md-caption" style="margin-right:1em;">www.oldurlpublisher.com</span>
+                            <md-divider class="line-dash" flex></md-divider>
+                            <md-input-container style="padding:0; max-width:50px;">
+                                <input type="number" value="60" disabled aria-label="otherweb">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <div layout="row" layout-align="space-between center" style="height:46px;">
+                            <input class="input-hashtag md-caption" type="text" name="name" placeholder="hashtag">
+                        <div layout="row" layout-align="end center" class="cat-chips" style="min-width:150px; max-width:250px; overflow:hidden;">
+                            <md-chips>
+                                <md-chip class="md-caption">Videos Viral</md-chip>
+                            </md-chips>
+                            <md-menu class="channel-menu">
+                                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                                    <ng-md-icon icon="more_vert" style="fill:black" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-menu-content width="3" layout-padding>
+                                    <md-radio-group ng-model="data.group1">
+                                        <md-radio-button value="Peliculas" class="md-primary">Peliculas</md-radio-button>
+                                        <md-radio-button value="Descargas" class="md-primary">Descargas</md-radio-button>
+                                        <md-radio-button value="Deportes" class="md-primary">Deportes</md-radio-button>
+                                        <md-radio-button value="Musica" class="md-primary">Musica</md-radio-button>
+                                        <md-radio-button value="Erotico" class="md-primary">Erotico</md-radio-button>
+                                        <md-radio-button value="Libros" class="md-primary">Libros</md-radio-button>
+                                        <md-radio-button value="Series" class="md-primary">Series</md-radio-button>
+                                        <md-radio-button value="Videos-viral" class="md-primary">Videos viral</md-radio-button>
+                                        <md-radio-button value="Juegos-viral" class="md-primary">Juegos viral</md-radio-button>
+                                    </md-radio-group>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-card>
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
+</div>

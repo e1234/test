@@ -1,0 +1,262 @@
+<section layout="row" flex style="height: 100%; overflow-y: auto;" hide>
+    <md-content class="md-content-clear" flex>
+        <md-tabs md-dynamic-height class="md-primary" md-center-tabs="true">
+            <md-tab label="Administracion">
+                <div class="the-wrapper admin-adevertiser">
+                    <div ng-repeat="item in [1, 2, 3, 4, 5, 6]" style="margin-bottom:1em;">
+                        <md-toolbar class="md-primary md-hue-1 md-toolbar-small">
+                            <div class="md-toolbar-tools">
+                                <h2>
+                                    <span>Jet</span>
+                                </h2>
+                                <span flex></span>
+                                <md-button class="md-icon-button" aria-label="More">
+                                    <md-tooltip>editar</md-tooltip>
+                                    <ng-md-icon icon="mode_edit" style="fill:white;" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Favorite">
+                                    <md-tooltip>ir a panel</md-tooltip>
+                                    <ng-md-icon icon="open_in_new" style="fill:white;" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Favorite">
+                                    <md-tooltip>cerrar</md-tooltip>
+                                    <ng-md-icon icon="close" style="fill:white;" size="20"></ng-md-icon>
+                                </md-button>
+                            </div>
+                        </md-toolbar>
+                        <table border="1" class="md-simple-table">
+                            <tr>
+                                <td>Notificaciones</td>
+                                <td>IO</td>
+                                <td>Cierre de facturacion</td>
+                                <td>Credito Maximo</td>
+                                <td>Consumo Total</td>
+                                <td>Total acreditado</td>
+                                <td>Balance</td>
+                            </tr>
+                            <tr ng-repeat="item in [1, 2, 3]">
+                                <td>
+                                    <md-button class="md-icon-button md-icon-button-small" aria-label="Eat cake">
+                                        <ng-md-icon icon="notifications" style="fill:grey;" size="20"></ng-md-icon>
+                                    </md-button>
+
+                                </td>
+                                <td><span>Lorem ipsum dolor sit amet consetetur</span></td>
+                                <td>
+                                    <md-select placeholder="Intervalo" ng-model="ctrl.userState" style="padding: 0; float: right; margin:0;">
+                                        <md-option>Mensual</md-option>
+                                        <md-option>Quincenal</md-option>
+                                        <md-option>Semanal</md-option>
+                                    </md-select>
+                                </td>
+                                <td>
+                                    <input type="number" name="name" value="10.000" style="border: none; width:80px; padding: 0.5em;">
+                                </td>
+                                <td>
+                                    <span>$ 2.000,00</span>
+                                </td>
+                                <td>
+                                    <span>$ 20.000,00</span>
+                                </td>
+                                <td>
+                                    <span>$ 2.000,00</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </md-tab>
+            <md-tab label="ABM Cuentas">
+                <div  class="the-wrapper">
+                    <div layout="column" class="md-whiteframe-z1" ng-repeat="(k, item) in [1, 2, 3]" style="margin-bottom:1em;">
+                        <!-- <div layout="row" layout-align="start center" class="inset" style="background-color: #fff; height:45px;">
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="showLogDetails = !showLogDetails;">
+                                <ng-md-icon icon="expand_more" style="fill: grey;" size="20"></ng-md-icon>
+                            </md-button>
+                            <span>Account Name</span>
+                            <span flex></span>
+                            <md-button class="md-icon-button" aria-label="Settings" style="">
+                                <ng-md-icon icon="login" style="fill: black;" size="20"></ng-md-icon>
+                            </md-button>
+                        </div> -->
+                        <md-toolbar class="md-toolbar-small md-hue-1" ng-click="showLogDetails = !showLogDetails;">
+                            <div class="md-toolbar-tools">
+                                <md-button class="md-icon-button" aria-label="Settings" ng-click="showLogDetails = !showLogDetails;">
+                                    <ng-md-icon icon="expand_more" style="fill: white;" size="20"></ng-md-icon>
+                                </md-button>
+                                <span class="md-subhead">Account Name</span>
+                                <span flex></span>
+                                <md-button class="md-icon-button" aria-label="Settings" style="">
+                                    <ng-md-icon icon="mode_edit" style="fill: white;" size="20"></ng-md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Settings" style="">
+                                    <ng-md-icon icon="login" style="fill: white;" size="20"></ng-md-icon>
+                                </md-button>
+                            </div>
+                        </md-toolbar>
+                        <md-divider ></md-divider>
+                        <div ng-show="showLogDetails" layout="column" layout-padding style="background-color:#fff;">
+                            <div>
+                                <div layout="row">
+                                    <div flex layout-padding style="height:100%; background-color: #fff;">
+                                        <md-input-container flex>
+                                            <label>Nombre de la cuenta</label>
+                                            <input ng-model="falseAddress">
+                                        </md-input-container>
+                                        <md-select flex placeholder="Account Manager" ng-model="falseAM" id="select-full-width-data" style="max-width: 220px;">
+                                            <md-option ng-value="c" ng-repeat="c in falseAM">{{ c }}</md-option>
+                                        </md-select>
+                                        <span class="md-body-2" layout-padding>Enviar password</span>
+                                        <div layout="row">
+                                            <md-input-container flex>
+                                                <label>Email</label>
+                                                <input ng-model="falseAddress">
+                                            </md-input-container>
+                                            <!-- <md-button class="md-fab md-mini md-primary" aria-label="Eat cake">
+                                                <ng-md-icon icon="add" style="fill: white" size="16"></ng-md-icon>
+                                            </md-button> -->
+                                            <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                                                <md-tooltip>Agregar email</md-tooltip>
+                                                <ng-md-icon icon="add" style="fill: #3F51B5" size="16"></ng-md-icon>
+                                            </md-button>
+                                            <md-button class="md-fab md-mini md-primary" aria-label="Eat cake">
+                                                <md-tooltip>Enviar</md-tooltip>
+                                                <ng-md-icon icon="send" style="fill: white" size="20"></ng-md-icon>
+                                            </md-button>
+                                        </div>
+                                        <!-- <div layout="row">
+                                            <span flex></span>
+                                            <md-button class="md-fab md-mini md-primary" aria-label="Eat cake">
+                                                <md-tooltip>Enviar</md-tooltip>
+                                                <ng-md-icon icon="send" style="fill: white" size="20"></ng-md-icon>
+                                            </md-button>
+                                        </div> -->
+
+                                    </div>
+                                    <div flex layout-padding style="height:100%; background-color: #fff;">
+                                        <!-- <md-input-container flex>
+                                            <label>Address</label>
+                                            <input ng-model="falseAddress">
+                                        </md-input-container> -->
+                                        <div ng-repeat="(value, key) in [1, 2, 3]" class="md-whiteframe-z1 io-card" ng-class="{ active: selectIO }" style="margin-bottom: 0.5em; overflow:hidden;">
+                                            <!-- <div layout="row" class="md-whiteframe-z1" style="height:40px;" ng-click="selectIO(key)">
+                                                Jet 1
+                                            </div> -->
+                                            <md-toolbar layout="row" layout-align="start center" ng-click="selectIO(key)" class="md-primary md-hue-1" style="height:40px; min-height: 40px;">
+                                                <div class="md-toolbar-tools" style="max-height:40px;">
+                                                    <span class="md-body-2">IO Company Name</span>
+                                                </div>
+                                                <md-menu md-position-mode="target-right target" style="height: 40px; padding:0;">
+                                                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)" style="height: 40px; line-height: 40px;">
+                                                        <ng-md-icon icon="attach_file" style="fill:white" size="22"></ng-md-icon>
+                                                    </md-button>
+                                                    <md-menu-content width="4" >
+                                                        <md-menu-item>
+                                                            <md-button ng-click="ctrl.announceClick($index)" disabled="disabled">
+                                                                <div layout="row">
+                                                                    <p flex>Descargar archivo</p>
+                                                                    <ng-md-icon icon="file_download" style="fill:black" size="20"></ng-md-icon>
+                                                                </div>
+                                                            </md-button>
+                                                        </md-menu-item>
+                                                        <md-menu-item>
+                                                            <md-button ng-click="ctrl.announceClick($index)">
+                                                                <div layout="row">
+                                                                    <p flex>Subir Archivo</p>
+                                                                    <ng-md-icon icon="file_upload" style="fill:black" size="20"></ng-md-icon>
+                                                                </div>
+                                                            </md-button>
+                                                        </md-menu-item>
+                                                    </md-menu-content>
+                                                </md-menu>
+                                                <md-menu md-position-mode="target-right target" style="height: 40px; padding:0;">
+                                                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)" style="height: 40px; line-height: 40px;">
+                                                        <ng-md-icon icon="check_circle" style="fill:white" size="22"></ng-md-icon>
+                                                    </md-button>
+                                                    <md-menu-content width="4" >
+                                                        <md-menu-item>
+                                                            <md-button ng-click="ctrl.announceClick($index)">
+                                                                <div layout="row">
+                                                                    <p flex>Aprobado</p>
+                                                                    <ng-md-icon icon="check_circle" style="fill:black" size="20"></ng-md-icon>
+                                                                </div>
+                                                            </md-button>
+                                                        </md-menu-item>
+                                                        <md-menu-item>
+                                                            <md-button ng-click="ctrl.announceClick($index)">
+                                                                <div layout="row">
+                                                                    <p flex>Pendiente</p>
+                                                                    <ng-md-icon icon="access_time" style="fill:black" size="20"></ng-md-icon>
+                                                                </div>
+                                                            </md-button>
+                                                        </md-menu-item>
+                                                        <md-menu-item>
+                                                            <md-button ng-click="ctrl.announceClick($index)">
+                                                                <div layout="row">
+                                                                    <p flex>Cancelado</p>
+                                                                    <ng-md-icon icon="not_interested" style="fill:black" size="20"></ng-md-icon>
+                                                                </div>
+                                                            </md-button>
+                                                        </md-menu-item>
+                                                    </md-menu-content>
+                                                </md-menu>
+                                            </md-toolbar>
+                                            <div style="background-color:#FAFAFA;" class="animation-io" ng-show="(showIO[key])" layout-padding>
+                                                <!-- <md-datepicker md-placeholder="Fecha de inicio"></md-datepicker> -->
+                                                <md-input-container flex>
+                                                    <label>Persona Autorizada</label>
+                                                    <input ng-model="falseAddress">
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <label>VAT</label>
+                                                    <input ng-model="falseAddress">
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <label>Nombre de la cuenta</label>
+                                                    <input ng-model="falseAddress">
+                                                </md-input-container>
+                                                <md-select flex placeholder="Pais" ng-model="falseAM" id="select-full-width-data" style="max-width: 220px;">
+                                                    <md-option ng-value="c" ng-repeat="c in falseAM">{{ c }}</md-option>
+                                                </md-select>
+                                                <md-input-container flex>
+                                                    <label>Ciudad</label>
+                                                    <input ng-model="falseAddress">
+                                                </md-input-container>
+                                                <div layout="row">
+                                                    <md-input-container flex>
+                                                        <label>Direccion</label>
+                                                        <input ng-model="falseAddress">
+                                                    </md-input-container>
+                                                    <md-input-container flex>
+                                                        <label>Codigo Postal</label>
+                                                        <input ng-model="falseAddress">
+                                                    </md-input-container>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div layout="row" style="margin: 0.5em 0.5em 0 0;">
+                                <span flex></span>
+                                <ng-md-icon icon="access_time" style="fill:white; margin:auto; margin-right: 0.5em;" size="20"></ng-md-icon>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </md-tab>
+            <md-tab label="Historico Facturas"></md-tab>
+        </md-tabs>
+    </md-content>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Filers</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <p>
+                This sidenav is locked open on your device. To go back to the default behavior,
+                narrow your display.
+            </p>
+        </md-content>
+    </md-sidenav>
+</section>

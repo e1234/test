@@ -1,0 +1,500 @@
+<div style="height: 100%;" divheight="alto">
+    <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" class="md-fling pool-fab-controls" md-open="demo.isOpen" ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false">
+        <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-accent md-mini">
+                <md-tooltip md-direction="top">Apply Filters</md-tooltip>
+                <ng-md-icon icon="done" style="fill:black" size="20"></ng-md-icon>
+            </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+            <div>
+                <md-button aria-label="clear filters" class="md-fab md-raised md-mini md-warn">
+                    <ng-md-icon icon="clear" style="fill:white" size="20"></ng-md-icon>
+                    <md-tooltip md-direction="left">Clear Filters</md-tooltip>
+                </md-button>
+            </div>
+        </md-fab-actions>
+    </md-fab-speed-dial>
+    <md-button class="md-whiteframe-z4 md-fab md-accent" aria-label="Use Android" style="position: absolute; bottom: 23px; right: 23px; z-index:1;">
+        <ng-md-icon icon="add" style="fill:black" size="20"></ng-md-icon>
+        <md-tooltip md-direction="left">Create New Offer</md-tooltip>
+    </md-button>
+    <div layout="column" flex layout-fill ng-cloak>
+        <md-toolbar md-scroll-shrink style="min-height: 49px;" layout="row">
+            <div layout="row" class="filters-pool-wrap">
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showChannel = !showChannel;">channel
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showChannel" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in channels">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showAdv = !showAdv;">advertiser&nbsp;(1)
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showAdv" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-input-container class="md-block" layout-padding>
+                                <label>Search</label>
+                                <input ng-model="user.searchAdv">
+                            </md-input-container>
+                            <md-list>
+                                <md-list-item ng-repeat="channel in adv">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showSize = !showSize;">size
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showSize" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in sizes">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showCountry = !showCountry;">country
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showCountry" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-input-container class="md-block" layout-padding>
+                                <label>Search</label>
+                                <input ng-model="user.searchCountry">
+                            </md-input-container>
+                            <md-list>
+                                <md-list-item ng-repeat="channel in country">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showDevice = !showDevice;">device
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showDevice" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in device">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showBrowser = !showBrowser;">browser
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showBrowser" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in browser">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showOs = !showOs;">OS
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showOs" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in OS">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="filter-pool-single">
+                    <md-button md-no-ink class="md-primary button-width" ng-click="showCarrier = !showCarrier;">carrier
+                        <ng-md-icon icon="expand_more" style="fill:white" size="16"></ng-md-icon>
+                    </md-button>
+                    <div ng-show="showCarrier" class="filter-pool-opt-card">
+                        <md-card md-theme="docs-dark">
+                            <md-list>
+                                <md-list-item ng-repeat="channel in carrier">
+                                    <span class="md-body-2" flex>{{channel.name}}</span>
+                                    <md-checkbox class="md-primary" ng-model="channel.wanted" aria-label="checkbox"></md-checkbox>
+                                </md-list-item>
+                            </md-list>
+                        </md-card>
+                    </div>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-content class="md-content-background no-effect" ng-style="{'height': alto+'px'}">
+            <section style="padding:0; padding-top:50px;" class="the-wrapper">
+                <div layout="row" layout-align="end center" layout-padding style="padding-bottom: 0;">
+                    <!-- <h4 style="margin: 1em;">Table Title</h4> -->
+                    <form>
+                        <input type="date" name="bday" value="2015-01-01" class="md-button" style="border:none;">
+                        <input type="date" name="bday" value="2015-01-10" class="md-button" style="border:none;">
+                        <md-button md-no-ink class="md-primary">ok</md-button>
+                    </form>
+                </div>
+                <md-card>
+
+                    <table border="1" class="md-simple-table" style="box-shadow:none;">
+                        <tr style="height:55px;">
+                            <td>ID Offer</td>
+                            <td>Preview</td>
+                            <td>Name Offer</td>
+                            <td>Advertiser</td>
+                            <td>Country</td>
+                            <td>Size</td>
+                            <td>Device</td>
+                            <td>OS</td>
+                            <td>Browser</td>
+                            <td>Payout</td>
+                            <td>Impressions</td>
+                            <td>Clicks</td>
+                            <td>Conversions</td>
+                            <td>Revenue</td>
+                            <td>LI active</td>
+                            <!-- <td>Restrictions</td> -->
+                            <td>Upload LI</td>
+                        </tr>
+                        <tr ng-repeat="item in [1, 2, 3, 4]" ng-click="viewOffer($event)">
+                            <td>
+                                <span>123456</span>
+                            </td>
+                            <td>
+                                <a href="https://image.freepik.com/free-icon/happy-emoticon_318-40206.jpg" target="_blank" style="width:48px; height:48px; display:block; margin: 0.5em 0;">
+                                    <img src="img/ad-48x48.png" alt="test">
+                                </a>
+                            </td>
+                            <td>
+                                <span>Test Name 1</span>
+                            </td>
+                            <td>
+                                <span>Advertiser Name</span>
+                            </td>
+                            <td>
+                                <span>Spain</span>
+                            </td>
+                            <td>
+                                <span>800x600</span>
+                            </td>
+                            <td>
+                                <span>Android</span>
+                            </td>
+                            <td>
+                                <span>Windows</span>
+                            </td>
+                            <td>
+                                <span>Chrome</span>
+                            </td>
+                            <td>
+                                <span>1.50</span>
+                            </td>
+                            <td>
+                                <span>12345</span>
+                            </td>
+                            <td>
+                                <span>2345</span>
+                            </td>
+                            <td>
+                                <span>150</span>
+                            </td>
+                            <td>
+                                <span>12345</span>
+                            </td>
+                            <td>
+                                <span>12345</span>
+                            </td>
+                            <td>
+                                <md-button class="md-icon-button" aria-label="upload">
+                                    <ng-md-icon icon="file_upload" style="fill:rgba(0, 0, 0, 0.54)" size="16"></ng-md-icon>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </table>
+                </md-card>
+
+                <md-card style="max-width:1200px; margin:0 auto; margin-top:2em; margin-bottom:2em;" class="textos-select">
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <div layout="column" layout-padding>
+                                <h3 class="md-title">Offer ID #0303456</h3>
+                                <span class="md-subhead">Spain / Jet Multimedia / Futbol</span>
+                            </div>
+                            <md-fab-speed-dial ng-hide="demo.hidden1" md-direction="down" class="md-fling adv-modal-controls" md-open="demo.isOpen1" ng-mouseenter="demo.isOpen1=true" ng-mouseleave="demo.isOpen1=false" style="margin-top: 20px;">
+                                <md-fab-trigger>
+                                    <md-button aria-label="menu" class="md-fab md-accent md-mini">
+                                        <md-tooltip md-direction="left">Edit</md-tooltip>
+                                        <ng-md-icon icon="edit" style="fill:black" size="20"></ng-md-icon>
+                                    </md-button>
+                                </md-fab-trigger>
+                                <md-fab-actions>
+                                    <div>
+                                        <md-button aria-label="clear filters" class="md-fab md-raised md-mini md-warn" ng-disabled="true">
+                                            <ng-md-icon icon="delete" style="fill:white" size="20"></ng-md-icon>
+                                            <md-tooltip md-direction="left">Cancel</md-tooltip>
+                                        </md-button>
+                                    </div>
+                                </md-fab-actions>
+                            </md-fab-speed-dial>
+                        </div>
+                    </md-toolbar>
+                    <div layout="row" layout-padding>
+                        <md-input-container class="width-100">
+                            <label>Tracking URL</label>
+                            <input ng-model="user.falseUrl">
+                        </md-input-container>
+                        <md-input-container class="width-100">
+                            <label>Preview URL</label>
+                            <input ng-model="user.falseUrl">
+                        </md-input-container>
+                    </div>
+                    <div layout="row">
+                        <div layout="column" class="width-100" layout-padding>
+                            <md-input-container>
+                                <label>Pricing type</label>
+                                <md-select ng-model="selPricing" aria-label="select">
+                                    <md-option ng-repeat="p in pricing" ng-value="p.id">
+                                    {{p.name}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                            <div layout="row">
+                                <md-input-container>
+                                    <label>Payout</label>
+                                    <input ng-model="user.falsePayout">
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Currency</label>
+                                    <md-select ng-model="ctrl.userState">
+                                      <md-option value="Euro">Euro</md-option>
+                                      <md-option value="Dolar">Dolar</md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Daily Cap.</label>
+                                    <input ng-model="user.falseDaily">
+                                </md-input-container>
+                            </div>
+                            <h3 class="md-body-2">Devices</h3>
+
+                            <div layout="column" class="over-scroll offer-dev">
+                                <div layout="row" layout-align="space-around center" ng-repeat="item in [1, 2, 3, 4]" class="offer-dev-wrapp">
+                                <!-- <ng-md-icon icon="phone_android" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon> -->
+                                    <md-input-container>
+                                        <label>Device</label>
+                                        <md-select ng-model="selDevice" aria-label="select">
+                                            <md-option ng-repeat="d in devices" ng-value="d.id">
+                                            {{d.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <!-- <ng-md-icon icon="android" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon> -->
+                                    <md-input-container>
+                                        <label>OS</label>
+                                        <md-select ng-model="selOs" aria-label="select">
+                                            <md-option ng-repeat="a in Os" ng-value="a.id">
+                                            {{a.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <!-- <ng-md-icon icon="settings_input_antenna" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon> -->
+                                    <md-input-container>
+                                        <label>Carrier</label>
+                                        <md-select ng-model="selCarrier" aria-label="select">
+                                            <md-option ng-repeat="b in carrier" ng-value="b.id">
+                                            {{b.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <!-- <ng-md-icon icon="chrome" style="fill:rgba(0, 0, 0, 0.54)" size="20"></ng-md-icon> -->
+                                    <md-input-container>
+                                        <label>Browser</label>
+                                        <md-select ng-model="selBrowser" aria-label="select">
+                                            <md-option ng-repeat="c in browser" ng-value="c.id">
+                                            {{c.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="width-100" layout-padding>
+                            <!-- <span class="md-body-2" layout-padding>Countries</span> -->
+                            <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in getMatches(searchText)" md-item-text="item.display" placeholder="Search countries">
+                                <span md-highlight-text="searchText">Argentina</span>
+                            </md-autocomplete>
+                            <md-list class="over-scroll list-countries">
+                                <md-subheader class="md-no-sticky subheader-aux"></md-subheader>
+                                <md-list-item>
+                                    <p>Argentina</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item>
+                                    <p>Spain</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item>
+                                    <p>Mexico</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item>
+                                    <p>Bolivia</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item>
+                                    <p>Peru</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item>
+                                    <p>Nigeria</p>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                            </md-list>
+
+                            <h3 class="md-body-2">Restrictions</h3>
+                            <textarea name="name" class="offert-comment" placeholder="Write here..."></textarea>
+
+                        </div>
+                    </div>
+
+
+                    <div layout="row">
+                        <!-- <div layout="row"> -->
+                            <div layout="column" class="width-100" layout-padding>
+                                <h3 class="md-body-2">Offer Thumbnail</h3>
+                                <!-- <img src="img/ad-48x48.png" alt="test" class="offer-thumb"> -->
+                                <div class="fake-offer-thumb">
+
+                                </div>
+                            </div>
+
+                        <!-- </div> -->
+
+                        <div layout="column" class="width-100" layout-padding>
+                            <h3 class="md-body-2">Banners</h3>
+                            <div layout="column">
+                                <md-list class="over-scroll list-banners">
+                                    <md-subheader class="md-no-sticky subheader-aux"></md-subheader>
+                                    <md-list-item>
+                                        <p>Banner 1</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                    <md-list-item>
+                                        <p>Banner 2</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                    <md-list-item>
+                                        <p>Banner 3</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                    <md-list-item>
+                                        <p>Banner 4</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                    <md-list-item>
+                                        <p>Banner 5</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                    <md-list-item>
+                                        <p>Banner 6</p>
+                                        <md-checkbox class="md-primary"></md-checkbox>
+                                    </md-list-item>
+                                    <md-divider></md-divider>
+                                </md-list>
+                                <md-button class="md-primary">Open Library</md-button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <h3 class="md-body-2" layout-padding>Active LI</h3>
+                    <table border="1" class="md-simple-table no-hover" style="box-shadow:none;">
+                        <tr>
+                            <td>#</td>
+                            <td>LI Name</td>
+                            <td>Impressions</td>
+                            <td>Clicks</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Line Item 1</span>
+                            </td>
+                            <td>
+                                <span>Spain - Jet Multimedia - Futbol Movistar</span>
+                            </td>
+                            <td>
+                                <span>123456</span>
+                            </td>
+                            <td>
+                                <span>123465</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Line Item 2</span>
+                            </td>
+                            <td>
+                                <span>Spain - Jet Multimedia - Futbol Orange</span>
+                            </td>
+                            <td>
+                                <span>123456</span>
+                            </td>
+                            <td>
+                                <span>123465</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Line Item 3</span>
+                            </td>
+                            <td>
+                                <span>Spain - Jet Multimedia - Futbol Vodafone</span>
+                            </td>
+                            <td>
+                                <span>123456</span>
+                            </td>
+                            <td>
+                                <span>123465</span>
+                            </td>
+                        </tr>
+                    </table>
+                </md-card>
+            </section>
+        </md-content>
+    </div>
+</div>
