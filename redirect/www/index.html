@@ -11,11 +11,17 @@
     </head>
     <body>
         <div class="app">
-            <iframe id="iframeApp" src="http://www.w3schools.com"></iframe>            
+            <iframe id="iframeApp" src="m.facebook.com"></iframe>            
+        </div>
+        <div class="app">
+            <input type="text" id="weburl" name="lastname" onkeypress="setWeb()">>
         </div>
     </body>
 </html>
 <script type="text/javascript">
+    function setWeb(){
+        document.getElementById("iframeApp").setAttribute("src",document.getElementById("weburl").value); 
+    }
     function setScreen(){
         var heightMaster = window.screen.availHeight * 0.80;
         var widthMaster = window.screen.availWidth;
